@@ -1,6 +1,7 @@
 #include<stdio.h>
 #include<string.h>
 #define Tam_Max 200
+#define NumerodFuentes 25
 
 struct CAgua{
 	
@@ -15,7 +16,7 @@ struct CAgua{
 int main() {
 int bandera=0;
 char Bfuente[50];
-float Bph;
+float Bph,mediaPh=0,media;
 char eleccion;
 struct CAgua fuente[Tam_Max];
 int i=0;
@@ -40,11 +41,29 @@ int Cfuentes=0,potable=0;
         	potable++;
         	printf("%s\t%.2f\t%d\t%d\t%d\t \n",fuente[i].parametros,fuente[i].PH,fuente[i].conductividad,fuente[i].turbidez,fuente[i].coliformes);
 		   
+		   
         	
 		}
+		mediaPh=mediaPh + fuente[i].PH;
 		   i++;
 		}
-	printf("Hay una cantidad de agua potable de :%d ",potable);
+	printf("Hay una cantidad de agua potable de :%d \n",potable);
+	
+	
+	
+	
+	printf("La media del ph de las fuentes  es: %f",mediaPh/NumerodFuentes);
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	fclose(ficheros);
 return 0;	
