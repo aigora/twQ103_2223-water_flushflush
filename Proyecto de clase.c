@@ -1,4 +1,5 @@
 #include<stdio.h>
+#include<string.h>
 #define Tam_Max 200
 
 struct CAgua{
@@ -12,10 +13,12 @@ struct CAgua{
 };
 
 int main() {
-	
-	
+int bandera=0;
+char Bfuente[50];
+float Bph;
+char eleccion;
 struct CAgua fuente[Tam_Max];
-int i=1;
+int i=0;
 int Cfuentes=0,potable=0;
 
   FILE *ficheros;
@@ -26,9 +29,7 @@ int Cfuentes=0,potable=0;
            	return 0;
 		   }
    
-   
-    
-
+  
 	while(fscanf(ficheros,"%s %f %d %d %d ",fuente[i].parametros,&fuente[i].PH,&fuente[i].conductividad,&fuente[i].turbidez,&fuente[i].coliformes) !=EOF){//bUCLE HASTA el fin del fichero,cuando no sabes su tamañ
         
 		
