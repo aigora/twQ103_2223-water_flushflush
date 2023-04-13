@@ -1,10 +1,12 @@
 # [Medio Ambiente]
 
-[Descripción breve del proyecto a realizar (2-3 frases).]
+[DescripciÃ³n breve del proyecto a realizar (2-3 frases).]
 
 ## Integrantes del equipo
 
-[�lvaro Bosque (klausitum)]
+[Álvaro Bosque (klausitum)]
+
+[BinBin Leng (alicialeng)]
 
 ## Objetivos del trabajo
 
