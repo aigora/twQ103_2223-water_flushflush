@@ -5,8 +5,8 @@
 ## Integrantes del equipo
 
 [Álvaro Bosque (klausitum)]
-
 [BinBin Leng (alicialeng)]
+[Senxue GUO(mariaggg)]
 
 ## Objetivos del trabajo
 
