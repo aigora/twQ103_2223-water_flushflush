@@ -21,6 +21,7 @@ char eleccion;
 struct CAgua fuente[Tam_Max];
 int i=0;
 int Cfuentes=0,potable=0;
+float porcentaje;
 /*char nombrebuscar[100];
 	int pH_inicio, pH_final*/
 	
@@ -116,11 +117,11 @@ int Cfuentes=0,potable=0;
 		   i++;
 		}
 	printf("Hay una cantidad de agua potable de :%d \n",potable);
+	porcentaje = (float)potable/ NumerodFuentes;
+	printf("El porcentaje de las fuentes :%f \n",porcentaje);
 	
-	printf("El porcentaje de las fuentes :%d \n",potable);
 	
-	
-	printf("La media del ph de las fuentes  es: %f",mediaPh/NumerodFuentes);
+	printf("de las cuales el ph de las fuentes  es: %f",mediaPh/NumerodFuentes);
 	
 	
 	
