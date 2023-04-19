@@ -20,7 +20,12 @@ int main() {
 	char opcion;
 	char nombrebuscar[100];
 	int pH_inicio, pH_final;
-
+    
+	
+	char Bfuente[50];
+    float Bph
+    
+    
 	FILE *ficheros;
 // Abrir fichero
 	ficheros = fopen("Parametro_5.txt","r");
@@ -146,7 +151,7 @@ while(eleccion != 'S' || eleccion != 'S');*/
 				scanf("%d", &pH_inicio);
 				printf("hasta ");
 				scanf("%d", &pH_final);
-				
+				if
 				
 				break;
 			case 'C':
