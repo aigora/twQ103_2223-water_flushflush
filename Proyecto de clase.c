@@ -91,7 +91,7 @@ float porcentaje;
 			   
 			   
 			   
-			   
+			   // PRUEBA
 			   
 			   i++;
 		}
