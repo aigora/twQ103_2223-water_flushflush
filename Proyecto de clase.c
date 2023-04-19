@@ -97,6 +97,7 @@ int main() {
 						printf("Conductividad (microS/cm): %d\n", fuentes[i].conductividad);
 						printf("Turbidez (NTU): %d\n", fuentes[i].turbidez);
 						printf("Coliforme (UFC/100ml): %d\n", fuentes[i].coliformes);
+						printf("-----Descripción de la fuente-----\n");
 						// A?adir aqu? las otras caracter?sticas de la fuente: potable....
 						
 					}
