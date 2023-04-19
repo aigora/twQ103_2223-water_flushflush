@@ -53,6 +53,62 @@ int main() {
 
 
 //Programacion
+/*do{
+	fflush(stdin);
+
+	printf("Que opcion eliges? \n (A)buscar por ph \n (B) Buscar por fuente\n (S) salir\n");
+	scanf("%c",&eleccion);
+
+	if(eleccion =='A' || eleccion =='a')
+	{
+		printf("Introduce codigo\n");
+		scanf("%f",&Bph);
+		for(i=0;i<25;i++)
+		{
+			if((Bph==fuente[i].PH) ==Bph  ){
+			
+			  printf(" %s ph de  %f %d %d %d\n",fuente[i].parametros,fuente[i].PH,fuente[i].conductividad,fuente[i].turbidez,fuente[i].coliformes);
+			  bandera = 1;
+			}
+		}
+		if(bandera==0)
+		printf("No encontrado\n");
+		
+	}
+	else if(eleccion =='B' || eleccion =='b')
+	{
+		fflush(stdin);
+		printf("Introduce nombre de la fuente \n");
+		gets(Bfuente);
+		
+			for(i=0;i<25;i++)
+		{
+			if(strcmp(fuente[i].parametros,Bfuente) ==0 ) {
+			
+			  printf(" %s %f %d %d %d\n",fuente[i].parametros,fuente[i].PH,fuente[i].conductividad,fuente[i].turbidez,fuente[i].coliformes);
+			  bandera = 1;
+			}
+		}
+		if(bandera==0)
+		printf("No encontrado\n");
+		
+		
+	}
+		else if(eleccion =='S' || eleccion =='s')
+		{
+			return 0;
+		}
+	else
+	{
+		printf("Error\n");
+		
+	}	
+	
+	i++;
+
+}
+
+while(eleccion != 'S' || eleccion != 'S');*/
 	do{ // El bucle do-while va a contener toda las programciones hasta el final, de manera que el usuario pueda hacer la b?squedad varias veces.
 		printf("A- Buscar por el nombre de la fuente.\n");
 		printf("B- Buscar por un intervalo de pH.\n");

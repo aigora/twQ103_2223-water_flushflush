@@ -47,19 +47,21 @@ int main() {
 	
 	while(fscanf(ficheros,"%s %f %d %d %d ",fuente[i].parametros,&fuente[i].PH,&fuente[i].conductividad,&fuente[i].turbidez,&fuente[i].coliformes) !=EOF){//bUCLE HASTA el fin del fichero,cuando no sabes su tamañ
         
-		
-		   //printf("%s\t%f\t%d\t%d\t%d\t \n",fuente[i].parametros,fuente[i].PH,fuente[i].conductividad,fuente[i].turbidez,fuente[i].coliformes);
-		   
-		  if( fuente[i].coliformes<1 && (fuente[i].PH>6.5 && fuente[i].PH<9.5) && (fuente[i].conductividad >50 && fuente[i].conductividad <500) && fuente[i].turbidez<1)// fuente[i].coliformes<0 && fuente[i].PH>6.5 && fuente[i].PH<9.5 && (fuente[i].conductividad >50 && fuente[i].conductividad <500) && fuente[i].turbidez<1
-        {
-        	potable++;
-        	printf("%s\t%.2f\t%d\t%d\t%d\t \n",fuente[i].parametros,fuente[i].PH,fuente[i].conductividad,fuente[i].turbidez,fuente[i].coliformes);
-		   
-		   
-        	mediaPh=mediaPh + fuente[i].PH;
+	  i++;
 		}
+			fclose(ficheros);
 		
-		   i++;
+		
+		for(i=0;i<=NumerodFuentes;i++){
+	
+				 if( fuente[i].coliformes<1 && (fuente[i].PH>6.5 && fuente[i].PH<9.5) && (fuente[i].conductividad >50 && fuente[i].conductividad <500) && fuente[i].turbidez<1)// fuente[i].coliformes<0 && fuente[i].PH>6.5 && fuente[i].PH<9.5 && (fuente[i].conductividad >50 && fuente[i].conductividad <500) && fuente[i].turbidez<1
+        			{
+        				potable++;
+        				printf("%s\t%.2f\t%d\t%d\t%d\t \n",fuente[i].parametros,fuente[i].PH,fuente[i].conductividad,fuente[i].turbidez,fuente[i].coliformes);
+		   
+		   
+        				mediaPh=mediaPh + fuente[i].PH;
+					}
 		}
 	printf("Hay una cantidad de agua potable de :%d \n",potable);
 	porcentaje = (float)potable/ NumerodFuentes;
@@ -72,6 +74,6 @@ int main() {
 	
 
 	
-	fclose(ficheros);
+
 return 0;	
 }
