@@ -5,6 +5,7 @@
 ## Integrantes del equipo
 
 [Álvaro Bosque (klausitum)]
+[Senxue GUO(mariaggg)]
 
 ## Objetivos del trabajo
 
