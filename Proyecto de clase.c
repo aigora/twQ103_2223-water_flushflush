@@ -14,14 +14,14 @@ struct CAgua{
 };
 
 int main() {
-int bandera=0;
-char Bfuente[50];
-float Bph,mediaPh=0,media;
-char eleccion;
-struct CAgua fuente[Tam_Max];
-int i=0;
-int Cfuentes=0,potable=0;
-float porcentaje;
+	int bandera=0;
+	char Bfuente[50];
+	float Bph,mediaPh=0,media;
+	char eleccion;
+	struct CAgua fuente[Tam_Max];
+	int i=0;
+	int Cfuentes=0,potable=0;
+	float porcentaje;
 
 	
 	
