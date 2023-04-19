@@ -18,7 +18,7 @@ int main() {
 	char Bfuente[50];
 	float Bph,mediaPh=0,media;
 	char eleccion;
-	struct CAgua fuente[Tam_Max];
+	struct CAgua fuentes[Tam_Max];
 	int i=0;
 	int Cfuentes=0,potable=0;
 	float porcentaje;
@@ -45,7 +45,7 @@ int main() {
      //Buscador alicia todavia no funciona
 	
 	
-	while(fscanf(ficheros,"%s %f %d %d %d ",fuente[i].parametros,&fuente[i].PH,&fuente[i].conductividad,&fuente[i].turbidez,&fuente[i].coliformes) !=EOF){//bUCLE HASTA el fin del fichero,cuando no sabes su tamañ
+	while(fscanf(ficheros,"%s %f %d %d %d ",fuentes[i].parametros,&fuentes[i].PH,&fuentes[i].conductividad,&fuentes[i].turbidez,&fuentes[i].coliformes) !=EOF){//bUCLE HASTA el fin del fichero,cuando no sabes su tamañ
         
 	  i++;
 		}
@@ -54,13 +54,13 @@ int main() {
 		
 		for(i=0;i<=NumerodFuentes;i++){
 	
-				 if( fuente[i].coliformes<1 && (fuente[i].PH>6.5 && fuente[i].PH<9.5) && (fuente[i].conductividad >50 && fuente[i].conductividad <500) && fuente[i].turbidez<1)// fuente[i].coliformes<0 && fuente[i].PH>6.5 && fuente[i].PH<9.5 && (fuente[i].conductividad >50 && fuente[i].conductividad <500) && fuente[i].turbidez<1
+				 if( fuentes[i].coliformes<1 && (fuentes[i].PH>6.5 && fuentes[i].PH<9.5) && (fuentes[i].conductividad >50 && fuentes[i].conductividad <500) && fuentes[i].turbidez<1)// fuente[i].coliformes<0 && fuente[i].PH>6.5 && fuente[i].PH<9.5 && (fuente[i].conductividad >50 && fuente[i].conductividad <500) && fuente[i].turbidez<1
         			{
         				potable++;
-        				printf("%s\t%.2f\t%d\t%d\t%d\t \n",fuente[i].parametros,fuente[i].PH,fuente[i].conductividad,fuente[i].turbidez,fuente[i].coliformes);
+        				printf("%s\t%.2f\t%d\t%d\t%d\t \n",fuentes[i].parametros,fuentes[i].PH,fuentes[i].conductividad,fuentes[i].turbidez,fuentes[i].coliformes);
 		   
 		   
-        				mediaPh=mediaPh + fuente[i].PH;
+        				mediaPh=mediaPh + fuentes[i].PH;
 					}
 		}
 	printf("Hay una cantidad de agua potable de :%d \n",potable);
