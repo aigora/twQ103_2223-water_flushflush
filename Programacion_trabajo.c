@@ -23,7 +23,7 @@ int main() {
     
 	
 	char Bfuente[50];
-    float Bph
+    float Bph;
     
     
 	FILE *ficheros;
@@ -151,7 +151,27 @@ while(eleccion != 'S' || eleccion != 'S');*/
 				scanf("%d", &pH_inicio);
 				printf("hasta ");
 				scanf("%d", &pH_final);
-				if
+				for(i=0;i<=NumerodFuentes;i++){
+				
+					if((pH_inicio<=fuentes[i].PH) && (pH_final>=fuentes[i].PH)){
+						
+						fuente_encontrado=1;
+						printf("-----Fuente-----\n");
+						printf("Nombre: %s\n", fuentes[i].nombre_fuente);
+						printf("pH: %.2f\n", fuentes[i].PH);
+						printf("Conductividad (microS/cm): %d\n", fuentes[i].conductividad);
+						printf("Turbidez (NTU): %d\n", fuentes[i].turbidez);
+						printf("Coliforme (UFC/100ml): %d\n", fuentes[i].coliformes);
+						// A?adir aqu? las otras caracter?sticas de la fuente: potable....
+						
+					}
+					
+					
+				}
+				 if(fuente_encontrado == 0) {
+						printf("No encontrado\n");
+						 // ???? Que salga del programa (elegir otra vez la opcion) o que vuelva a introducir el nombre ???
+					}
 				
 				break;
 			case 'C':
