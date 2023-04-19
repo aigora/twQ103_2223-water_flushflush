@@ -22,8 +22,7 @@ struct CAgua fuente[Tam_Max];
 int i=0;
 int Cfuentes=0,potable=0;
 float porcentaje;
-/*char nombrebuscar[100];
-	int pH_inicio, pH_final*/
+
 	
 	
 //printf(""); // Ideas: "Bienvenidos al navegador Water_FlushFlush"...
@@ -43,61 +42,7 @@ float porcentaje;
            	return 0;
 		   }
    
-     //Buscador alicia todavia no funcionA
-     /*	while(fscanf(ficheros,"%s %f %d %d %d ",fuente[i].parametros,&fuente[i].PH,&fuente[i].conductividad,&fuente[i].turbidez,&fuente[i].coliformes) !=EOF){
-	 do{ // El bucle do-while va a contener toda las programciones hasta el final, de manera que el usuario pueda hacer la b?squedad varias veces.
-		while(fscanf(ficheros,"%s %f %d %d %d ",fuente[i].parametros,&fuente[i].PH,&fuente[i].conductividad,&fuente[i].turbidez,&fuente[i].coliformes) !=EOF){//bUCLE HASTA el fin del fichero,cuando no sabes su tama?o
-
-			printf("1-Buscar por el nombre de la fuente.\n2-Buscar por un intervalo de pH.\n3-Salir del programa.\n");	// !!!! Hacemos con n?meros o con letras?	
-			printf("Introduzca la opci?n deseada: ");
-			scanf("%d", &opcion);
-			   switch (opcion) {
-			case 1:
-				printf("Introducir el nombre de la fuente: ");
-				scanf("%s", nombrebuscar);
-				
-				for(i=0; i<Tam_Max; i++) {
-					if(strcmp(fuente[i].nombre_fuente,nombrebuscar)==0) {
-						fuente_encontrado=1;
-						printf("-----Fuente-----\n");
-						printf("Nombre: %s\n", fuente[i].nombre_fuente);
-						printf("pH: %.2f\n", fuente[i].PH);
-						printf("Conductividad (microS/cm): %d\n", fuente[i].conductividad);
-						printf("Turbidez (NTU): %d\n", fuente[i].turbidez);
-						printf("Coliforme (UFC/100ml): %d\n", fuente[i].coliformes);
-						// A?adir aqu? las otras caracter?sticas de la fuente: potable....
-					} 
-					if(fuente_encontrado == 0) {
-						printf("El fuente %s no existe.\n", nombrebuscar); // ???? Que salga del programa (elegir otra vez la opcion) o que vuelva a introducir el nombre ???
-					}
-				}
-				
-				
-				break;
-			case 2:
-				printf("Introducir el intervalo de pH: desde ");
-				scanf("%d", &pH_inicio);
-				printf("hasta ");
-				scanf("%d", &pH_final);
-				
-				
-				break;
-			case 3:
-				printf("Has salido del programa.\n");
-				break;
-			default:
-				printf("Opcion incorrecta.\n");
-			   
-			   
-			   
-			   
-			   // PRUEBA
-			   
-			   i++;
-		}
-		
-		
-		*/
+     //Buscador alicia todavia no funciona
 	
 	
 	while(fscanf(ficheros,"%s %f %d %d %d ",fuente[i].parametros,&fuente[i].PH,&fuente[i].conductividad,&fuente[i].turbidez,&fuente[i].coliformes) !=EOF){//bUCLE HASTA el fin del fichero,cuando no sabes su tamañ
@@ -125,14 +70,7 @@ float porcentaje;
 	
 	
 	
-	
-	
-	
-	
-	
-	
-	
-	
+
 	
 	fclose(ficheros);
 return 0;	
