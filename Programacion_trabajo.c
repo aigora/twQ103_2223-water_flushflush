@@ -29,8 +29,8 @@ int main() {
        	return 0;
 	}
 // Leer el fichero
-	while(fscanf(ficheros,"%s %s %s %s %s",parametro,pH,conductividad,turbidez,coliforme) != EOF) {
-	} // La primera línea del fichero no aporta
+	fscanf(ficheros,"%s %s %s %s %s",parametro,pH,conductividad,turbidez,coliforme); 
+	// La primera línea del fichero no aporta
 	
     while(fscanf(ficheros,"%s %f  %d %d  %d",fuentes[i].nombre_fuente,&fuentes[i].PH,&fuentes[i].conductividad,&fuentes[i].turbidez,&fuentes[i].coliformes) !=EOF){
 		
