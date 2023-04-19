@@ -115,6 +115,7 @@ int main() {
 
 while(eleccion != 'S' || eleccion != 'S');*/
 	do{ // El bucle do-while va a contener toda las programciones hasta el final, de manera que el usuario pueda hacer la b?squedad varias veces.
+	   fflush(stdin);
 		printf("A- Buscar por el nombre de la fuente.\n");
 		printf("B- Buscar por un intervalo de pH.\n");
 		printf("C- Salir del programa.\n");	
@@ -122,6 +123,7 @@ while(eleccion != 'S' || eleccion != 'S');*/
 		scanf("%c", &opcion);
 		switch (opcion) {
 			case 'A':
+			case 'a':
 				printf("Introducir el nombre de la fuente: ");
 				scanf("%s", nombrebuscar);
 				
@@ -147,6 +149,7 @@ while(eleccion != 'S' || eleccion != 'S');*/
 				
 				break;
 			case 'B':
+			case 'b':
 				printf("Introducir el intervalo de pH: desde ");
 				scanf("%d", &pH_inicio);
 				printf("hasta ");
@@ -175,13 +178,14 @@ while(eleccion != 'S' || eleccion != 'S');*/
 				
 				break;
 			case 'C':
+			case 'c':
 				printf("Has salido del programa.\n");
 				break;
 			default:
 				printf("Opcion incorrecta.\n");
 				break;	   
 		}
-	} while (opcion<'A' && opcion>'B');
+	} while (opcion != 'C' || opcion != 'c');
 
 	return 0;	
 }
