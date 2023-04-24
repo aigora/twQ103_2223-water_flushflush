@@ -116,6 +116,7 @@ int main() {
 						printf("Conductividad (microS/cm): %d\n", fuentes[i].conductividad);
 						printf("Turbidez (NTU): %d\n", fuentes[i].turbidez);
 						printf("Coliforme (UFC/100ml): %d\n", fuentes[i].coliformes);
+						
 						// A?adir aqu? las otras caracter?sticas de la fuente: potable....
 						
 					}
@@ -177,26 +178,4 @@ return 0;
 
 
 
-int potable(char fuente){
-	int espotable=1;
-	int i;
-	struct CAgua fuentes[Tam_Max];
-		for(i=0;i<=NumerodFuentes;i++){
-	
-				 if( fuentes[i].coliformes<1 && (fuentes[i].PH>6.5 && fuentes[i].PH<9.5) && (fuentes[i].conductividad >50 && fuentes[i].conductividad <500) && fuentes[i].turbidez<1)// fuente[i].coliformes<0 && fuente[i].PH>6.5 && fuente[i].PH<9.5 && (fuente[i].conductividad >50 && fuente[i].conductividad <500) && fuente[i].turbidez<1
-        			{
-        				
-		    			espotable=1;
-		   
-        				
-					}
-				else{
-					espotable=0;
-				}
-				return espotable;
-		}
-	
-	
-	
-	
-}
+
