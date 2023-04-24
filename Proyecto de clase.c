@@ -54,7 +54,8 @@ int main() {
 	fscanf(ficheros,"%s %s %s %s %s",parametro,pH,conductividad,turbidez,coliforme); 
 	// La primera línea del fichero no aporta
 	i=0;
-    while(fscanf(ficheros,"%s %f  %d %d  %d",fuentes[i].nombre_fuente,&fuentes[i].PH,&fuentes[i].conductividad,&fuentes[i].turbidez,&fuentes[i].coliformes) !=EOF){
+    
+	while(fscanf(ficheros,"%s %f  %d %d  %d",fuentes[i].nombre_fuente,&fuentes[i].PH,&fuentes[i].conductividad,&fuentes[i].turbidez,&fuentes[i].coliformes) !=EOF){
 		
     	i++;
 	}
@@ -62,8 +63,8 @@ int main() {
 	fclose(ficheros);
 
 // Programacion
-	do{ // El bucle do-while va a contener toda las programciones hasta el final, de manera que el usuario pueda hacer la b?squedad varias veces.
-	    fflush(stdin);
+     	do{ // El bucle do-while va a contener toda las programciones hasta el final, de manera que el usuario pueda hacer la b?squedad varias veces.
+	   fflush(stdin);
 		printf("A- Buscar por el nombre de la fuente.\n");
 		printf("B- Buscar por un intervalo de pH.\n");
 		printf("C- Salir del programa.\n");	
@@ -74,6 +75,7 @@ int main() {
 			case 'a':
 				printf("Introducir el nombre de la fuente: ");
 				scanf("%s", nombrebuscar);
+				
 				for(i=0; i<Tam_Max; i++) {
 					orden=strcmp(fuentes[i].nombre_fuente, nombrebuscar);
 					if(orden==0) {
@@ -87,10 +89,12 @@ int main() {
 						// A?adir aqu? las otras caracter?sticas de la fuente: potable....
 						break;
 					} 
+					
+						 // ???? Que salga del programa (elegir otra vez la opcion) o que vuelva a introducir el nombre ???
+					}
+					
 					if(fuente_encontrado == 0) {
 						printf("%s no existe.\n", nombrebuscar);
-						break; // ???? Que salga del programa (elegir otra vez la opcion) o que vuelva a introducir el nombre ???
-					}
 				}
 				
 				
@@ -132,9 +136,10 @@ int main() {
 				printf("Opcion incorrecta.\n");
 				break;	   
 		}
-	} while (opcion != 'C' || opcion != 'c');
+	}
+	 
+	while (opcion != 'C' || opcion != 'c');
 
-		
 		
 		
 		

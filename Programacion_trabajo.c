@@ -86,10 +86,12 @@ int main() {
 						// A?adir aqu? las otras caracter?sticas de la fuente: potable....
 						break;
 					} 
+					
+						 // ???? Que salga del programa (elegir otra vez la opcion) o que vuelva a introducir el nombre ???
+					}
+					
 					if(fuente_encontrado == 0) {
 						printf("%s no existe.\n", nombrebuscar);
-						break; // ???? Que salga del programa (elegir otra vez la opcion) o que vuelva a introducir el nombre ???
-					}
 				}
 				
 				
@@ -131,7 +133,9 @@ int main() {
 				printf("Opcion incorrecta.\n");
 				break;	   
 		}
-	} while (opcion != 'C' || opcion != 'c');
+	}
+	 
+	while (opcion != 'C' || opcion != 'c');
 
 	return 0;	
 }
