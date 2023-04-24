@@ -2,7 +2,7 @@
 #include<string.h>
 #define Tam_Max 200
 #define NumerodFuentes 25
-
+//prueba luego borrar
 struct CAgua{
 	char nombre_fuente[Tam_Max];
 	float PH;
@@ -35,7 +35,7 @@ int main() {
 	}
 // Leer el fichero
 	fscanf(ficheros,"%s %s %s %s %s",parametro,pH,conductividad,turbidez,coliforme); 
-	// La primera línea del fichero no aporta
+	// La primera lÃ­nea del fichero no aporta
 	
     while(fscanf(ficheros,"%s %f  %d %d  %d",fuentes[i].nombre_fuente,&fuentes[i].PH,&fuentes[i].conductividad,&fuentes[i].turbidez,&fuentes[i].coliformes) !=EOF){
 		
@@ -44,7 +44,7 @@ int main() {
 // Cerrar fichero
 	fclose(ficheros);
 	
-//Comprobación si ha leido bien el fichero
+//ComprobaciÃ³n si ha leido bien el fichero
 //No es necesario ahora
 /*	FILE *comprobacion;
 	comprobacion=fopen("Comprobacion.txt","w");
