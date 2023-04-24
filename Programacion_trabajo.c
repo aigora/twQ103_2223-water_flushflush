@@ -126,7 +126,6 @@ int main() {
 				
 				break;
 			case 'C':
-			case 'c':
 				printf("Has salido del programa.\n");
 				break;
 			default:
@@ -135,7 +134,7 @@ int main() {
 		}
 	}
 	 
-	while (opcion != 'C' || opcion != 'c');
+	while (opcion != 'C' );
 
 	return 0;	
 }
