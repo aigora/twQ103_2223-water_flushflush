@@ -7,6 +7,7 @@
 [Álvaro Bosque (klausitum)]
 [BinBin Leng (alicialeng)]
 [Senxue GUO(mariaggg)]
+[Javier Artaloytia(javierartaloytia)]
 
 ## Objetivos del trabajo
 
