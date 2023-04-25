@@ -20,7 +20,15 @@ int main() {
 	char opcion;
 	char nombrebuscar[100];
 	int pH_inicio, pH_final;
-    
+//Variables para el inicio de sesion o registro    
+	int main() {
+    	char usu[200];
+   	 char contra[200];
+   	 char modo;
+   	 char nuevousu[200];
+   	 char nuevacontra[200];
+   	 int registrado = 0;
+		
 	
 	char Bfuente[50];
     float Bph;
