@@ -23,11 +23,11 @@ int main() {
 //Variables para el inicio de sesion o registro    
 	int main() {
     	char usu[200];
-   	 char contra[200];
-   	 char modo;
-   	 char nuevousu[200];
-   	 char nuevacontra[200];
-   	 int registrado = 0;
+   	char contra[200];
+   	char modo;
+   	char nuevousu[200];
+   	char nuevacontra[200];
+   	int registrado = 0;
 		
 	
 	char Bfuente[50];
