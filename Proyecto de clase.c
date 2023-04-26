@@ -15,14 +15,20 @@ struct CAgua{
 
 };
 
-int potable(char fuente);
+float mediaph(struct CAgua [],int num);
+
+void serapotable(struct CAgua [],int num);
+
+void grafica(struct CAgua [],int num);
+
+void potabilidad(struct CAgua [],int num);
 
 
 int main() {
 // Variables que se usan ...
 	float mediaPh=0,media;
 	struct CAgua fuentes[Tam_Max];
-	int Cfuentes=0,potable=0;
+	int Cfuentes=0;
 	float porcentaje;
 // Variables para leer ficheros
 	char parametro[100], pH[100], conductividad[100], turbidez[100], coliforme[100];
@@ -86,6 +92,7 @@ int main() {
 						printf("Conductividad (microS/cm): %d\n", fuentes[i].conductividad);
 						printf("Turbidez (NTU): %d\n", fuentes[i].turbidez);
 						printf("Coliforme (UFC/100ml): %d\n", fuentes[i].coliformes);
+						serapotable(fuentes,i);
 						// A?adir aqu? las otras caracter?sticas de la fuente: potable....
 						break;
 					} 
@@ -116,6 +123,7 @@ int main() {
 						printf("Conductividad (microS/cm): %d\n", fuentes[i].conductividad);
 						printf("Turbidez (NTU): %d\n", fuentes[i].turbidez);
 						printf("Coliforme (UFC/100ml): %d\n", fuentes[i].coliformes);
+						serapotable(fuentes,i);
 						
 						// A?adir aqu? las otras caracter?sticas de la fuente: potable....
 						
@@ -145,26 +153,17 @@ int main() {
 		
 
 		
-		
+		grafica(fuentes,NumerodFuentes);
 		
 		//Esto va al final como resumen
-		for(i=0;i<=NumerodFuentes;i++){
-	
-				 if( fuentes[i].coliformes<1 && (fuentes[i].PH>6.5 && fuentes[i].PH<9.5) && (fuentes[i].conductividad >50 && fuentes[i].conductividad <500) && fuentes[i].turbidez<1)// fuente[i].coliformes<0 && fuente[i].PH>6.5 && fuente[i].PH<9.5 && (fuente[i].conductividad >50 && fuente[i].conductividad <500) && fuente[i].turbidez<1
-        			{
-        				potable++;
-        				printf("%s\t%.2f\t%d\t%d\t%d\t \n",fuentes[i].nombre_fuente,fuentes[i].PH,fuentes[i].conductividad,fuentes[i].turbidez,fuentes[i].coliformes);
-		   
-		   
-        				mediaPh=mediaPh + fuentes[i].PH;
-					}
-		}
-	printf("Hay una cantidad de agua potable de :%d \n",potable);
-	porcentaje = (float)potable/ NumerodFuentes;
-	printf("El porcentaje de las fuentes :%f \n",porcentaje);
+		
+		printf("%f",mediaph(fuentes,NumerodFuentes));
 	
 	
-	printf("de las cuales el ph de las fuentes  es: %f",mediaPh/NumerodFuentes);
+     potabilidad(fuentes,NumerodFuentes);
+	
+	
+	
 	
 	
 	
@@ -173,8 +172,97 @@ int main() {
 
 return 0;	
 }
+void serapotable(struct CAgua fuentes[],int num){
+	
 
 
+	
+ 
+    char espotable[50] = "Es potable";
+    char nopotable[50] = "NO es potable";
+	int i;
 
+	             
+	           
+	
+				 if( fuentes[num].coliformes<1 && (fuentes[num].PH>6.5 && fuentes[num].PH<9.5) && (fuentes[num].conductividad >50 && fuentes[num].conductividad <500) && fuentes[num].turbidez<1)// fuente[i].coliformes<0 && fuente[i].PH>6.5 && fuente[i].PH<9.5 && (fuente[i].conductividad >50 && fuente[i].conductividad <500) && fuente[i].turbidez<1
+        		  
+					{
+        				
+		           printf("%s\n",espotable);
+		           
+        				
+					}
+				else{
+				 
+				 printf("%s\n",nopotable);
+				   
+				    }
+				
+					
+				    
+			
+		}
+		
+		
+float mediaph(struct CAgua fuentes[],int num){
+	
+	
+	float suma=0;
+	int i;
+	
+	for(i=0;i<num;i++){
+		
+		suma +=  fuentes[i].PH;
+		
+	}
+	printf("La media de ph es de : ");
+	return (suma/num);
+}
 
+void grafica(struct CAgua fuentes[],int num){
 
+	int i;
+	
+	printf("GRAFICA DE FUENTES POTABLES\n");
+	
+	for(i=0;i<=NumerodFuentes;i++){
+	
+				 if( fuentes[i].coliformes<1 && (fuentes[i].PH>6.5 && fuentes[i].PH<9.5) && (fuentes[i].conductividad >50 && fuentes[i].conductividad <500) && fuentes[i].turbidez<1)// fuente[i].coliformes<0 && fuente[i].PH>6.5 && fuente[i].PH<9.5 && (fuente[i].conductividad >50 && fuente[i].conductividad <500) && fuente[i].turbidez<1
+        			{
+        				
+        				printf("%s\t%.2f\t%d\t%d\t%d\t \n",fuentes[i].nombre_fuente,fuentes[i].PH,fuentes[i].conductividad,fuentes[i].turbidez,fuentes[i].coliformes);
+		   
+		   
+        			
+					}
+		}
+
+}
+void potabilidad(struct CAgua fuentes[],int num){
+	
+	
+	int potable=0,i;
+	
+	
+	
+	
+	
+	for(i=0;i<num;i++){
+	
+			if( fuentes[i].coliformes<1 && (fuentes[i].PH>6.5 && fuentes[i].PH<9.5) && (fuentes[i].conductividad >50 && fuentes[i].conductividad <500) && fuentes[i].turbidez<1)// fuente[i].coliformes<0 && fuente[i].PH>6.5 && fuente[i].PH<9.5 && (fuente[i].conductividad >50 && fuente[i].conductividad <500) && fuente[i].turbidez<1
+        		  
+			{
+        				
+		          potable++;
+		           
+        				
+			}
+	}
+	
+	printf("\n Como se puede ver :\nHay una cantidad de agua potable de  %d fuentes \n ",potable);
+	
+	printf("El porcentaje de las fuentes  que son potables es de :%f  \n",100*(float)potable/ NumerodFuentes);
+	
+
+}
