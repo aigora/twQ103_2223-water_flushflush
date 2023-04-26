@@ -16,6 +16,7 @@ struct CAgua{
 };
 
 int potable(char fuente);
+int potable_col(int , char []); 
 
 
 int main() {
@@ -80,13 +81,15 @@ int main() {
 					orden=strcmp(fuentes[i].nombre_fuente, nombrebuscar);
 					if(orden==0) {
 						fuente_encontrado=1;
-						printf("-----Fuente-----\n");
+						printf("----------Fuente----------\n");
 						printf("Nombre: %s\n", fuentes[i].nombre_fuente);
 						printf("pH: %.2f\n", fuentes[i].PH);
 						printf("Conductividad (microS/cm): %d\n", fuentes[i].conductividad);
 						printf("Turbidez (NTU): %d\n", fuentes[i].turbidez);
 						printf("Coliforme (UFC/100ml): %d\n", fuentes[i].coliformes);
 						// A?adir aqu? las otras caracter?sticas de la fuente: potable....
+						printf("Segun los datos proporcionados, %s cumple las siguientes caracteristicas: \n", fuentes[i].nombre_fuente);
+						potable_col(fuentes[i].coliformes, fuentes[i].nombre_fuente);
 						break;
 					} 
 					
@@ -97,7 +100,7 @@ int main() {
 						printf("%s no existe.\n", nombrebuscar);
 				}
 				
-				
+				printf("\n");
 				break;
 			case 'B':
 			case 'b':
@@ -116,8 +119,9 @@ int main() {
 						printf("Conductividad (microS/cm): %d\n", fuentes[i].conductividad);
 						printf("Turbidez (NTU): %d\n", fuentes[i].turbidez);
 						printf("Coliforme (UFC/100ml): %d\n", fuentes[i].coliformes);
-						
 						// A?adir aqu? las otras caracter?sticas de la fuente: potable....
+						printf("Segun los datos proporcionados, %s cumple las siguientes caracteristicas: \n", fuentes[i].nombre_fuente);
+						potable_col(fuentes[i].coliformes, fuentes[i].nombre_fuente);
 						
 					}
 					
@@ -127,13 +131,16 @@ int main() {
 						printf("No encontrado\n");
 						 // ???? Que salga del programa (elegir otra vez la opcion) o que vuelva a introducir el nombre ???
 					}
+				printf("\n");
 				
 				break;
 			case 'C':
 				printf("Has salido del programa.\n");
+				printf("\n");
 				break;
 			default:
 				printf("Opcion incorrecta.\n");
+				printf("\n");
 				break;	   
 		}
 	}
@@ -173,6 +180,22 @@ int main() {
 
 return 0;	
 }
+
+int potable_col(int dato, char nombre[]) { // dato=fuentes[i].coliforme   nombre=fuentes[i].nombre_fuente
+	
+	if(dato<2) {
+		printf("El agua es potable.\n");
+	}
+	else if(dato==2) {
+		printf("El valor del coliforme ha llegado al limite.\nNo es recomendable beber el agua del %s.\n", nombre);
+	}
+	else if(dato>2) {
+		printf("El valor del coliforme ha alcanzado el limite.\nProhibido beber el agua del %s.\n", nombre);
+	}
+	
+	return ;
+}
+
 
 
 
