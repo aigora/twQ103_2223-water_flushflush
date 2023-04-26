@@ -16,7 +16,6 @@ struct CAgua{
 
 };
 
-<<<<<<< HEAD
 float mediaph(struct CAgua [],int num);
 
 void serapotable(struct CAgua [],int num);
@@ -24,11 +23,13 @@ void serapotable(struct CAgua [],int num);
 void grafica(struct CAgua [],int num);
 
 void potabilidad(struct CAgua [],int num);
-=======
+
 int potable(char fuente);
+
 int potable_col(int , char []); // Comprobar si el agua es potable de acuerdo con su valor de coliforme.
+
 void imprimir_dato(struct CAgua [], int );
->>>>>>> 2d8e053e3284b85aced5cb553e8230d428a692ba
+
 
 
 int main() {
@@ -93,7 +94,7 @@ int main() {
 					orden=strcmp(fuentes[i].nombre_fuente, nombrebuscar);
 					if(orden==0) {
 						fuente_encontrado=1;
-<<<<<<< HEAD
+
 						printf("-----Fuente-----\n");
 						printf("Nombre: %s\n", fuentes[i].nombre_fuente);
 						printf("pH: %.2f\n", fuentes[i].PH);
@@ -101,9 +102,9 @@ int main() {
 						printf("Turbidez (NTU): %d\n", fuentes[i].turbidez);
 						printf("Coliforme (UFC/100ml): %d\n", fuentes[i].coliformes);
 						serapotable(fuentes,i);
-=======
+
 						imprimir_dato(fuentes, i);
->>>>>>> 2d8e053e3284b85aced5cb553e8230d428a692ba
+
 						// A?adir aqu? las otras caracter?sticas de la fuente: potable....
 						printf("Segun los datos proporcionados, %s cumple las siguientes caracteristicas: \n", fuentes[i].nombre_fuente);
 						potable_col(fuentes[i].coliformes, fuentes[i].nombre_fuente);
@@ -130,7 +131,7 @@ int main() {
 					if((pH_inicio<=fuentes[i].PH) && (pH_final>=fuentes[i].PH)){
 						
 						fuente_encontrado=1;
-<<<<<<< HEAD
+
 						printf("-----Fuente-----\n");
 						printf("Nombre: %s\n", fuentes[i].nombre_fuente);
 						printf("pH: %.2f\n", fuentes[i].PH);
@@ -139,9 +140,9 @@ int main() {
 						printf("Coliforme (UFC/100ml): %d\n", fuentes[i].coliformes);
 						serapotable(fuentes,i);
 						
-=======
+
 						imprimir_dato(fuentes, i);
->>>>>>> 2d8e053e3284b85aced5cb553e8230d428a692ba
+
 						// A?adir aqu? las otras caracter?sticas de la fuente: potable....
 						printf("Segun los datos proporcionados, %s cumple las siguientes caracteristicas: \n", fuentes[i].nombre_fuente);
 						potable_col(fuentes[i].coliformes, fuentes[i].nombre_fuente);
@@ -200,7 +201,7 @@ void serapotable(struct CAgua fuentes[],int num){
 int potable_col(int dato, char nombre[]) { // dato=fuentes[i].coliforme   nombre=fuentes[i].nombre_fuente
 	
 	if(dato<2) {
-		printf("1.-El agua es potable.\n");
+		printf("1.-Es posible su consumicion.\n");
 	}
 	else if(dato==2) {
 		printf("1.-El valor del coliforme ha llegado al limite.\nATENCiON: No es recomendable beber el agua del %s.\n", nombre);
