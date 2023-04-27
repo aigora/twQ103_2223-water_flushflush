@@ -18,7 +18,7 @@ struct CAgua{
 
 float mediaph(struct CAgua [],int num);
 
-void serapotable(struct CAgua [],int num);
+// void serapotable(struct CAgua [],int num);
 
 void grafica(struct CAgua [],int num);
 
@@ -28,8 +28,7 @@ int potable(char fuente);
 
 int potable_col(int , char []); // Comprobar si el agua es potable de acuerdo con su valor de coliforme.
 
-void imprimir_dato(struct CAgua [], int );
-
+int imprimirdato(struct CAgua [], int);
 
 
 int main() {
@@ -77,7 +76,7 @@ int main() {
 	fclose(ficheros);
 
 // Programacion
-     	do{ // El bucle do-while va a contener toda las programciones hasta el final, de manera que el usuario pueda hacer la b?squedad varias veces.
+    do{ // El bucle do-while va a contener toda las programciones hasta el final, de manera que el usuario pueda hacer la b?squedad varias veces.
 	   fflush(stdin);
 		printf("A- Buscar por el nombre de la fuente.\n");
 		printf("B- Buscar por un intervalo de pH.\n");
@@ -95,15 +94,9 @@ int main() {
 					if(orden==0) {
 						fuente_encontrado=1;
 
-						printf("-----Fuente-----\n");
-						printf("Nombre: %s\n", fuentes[i].nombre_fuente);
-						printf("pH: %.2f\n", fuentes[i].PH);
-						printf("Conductividad (microS/cm): %d\n", fuentes[i].conductividad);
-						printf("Turbidez (NTU): %d\n", fuentes[i].turbidez);
-						printf("Coliforme (UFC/100ml): %d\n", fuentes[i].coliformes);
-						serapotable(fuentes,i);
+						//serapotable(fuentes,i);
 
-						imprimir_dato(fuentes, i);
+						imprimirdato(fuentes, i);
 
 						// A?adir aqu? las otras caracter?sticas de la fuente: potable....
 						printf("Segun los datos proporcionados, %s cumple las siguientes caracteristicas: \n", fuentes[i].nombre_fuente);
@@ -138,10 +131,9 @@ int main() {
 						printf("Conductividad (microS/cm): %d\n", fuentes[i].conductividad);
 						printf("Turbidez (NTU): %d\n", fuentes[i].turbidez);
 						printf("Coliforme (UFC/100ml): %d\n", fuentes[i].coliformes);
-						serapotable(fuentes,i);
+						//serapotable(fuentes,i);
 						
-
-						imprimir_dato(fuentes, i);
+						imprimirdato(fuentes, i);
 
 						// A?adir aqu? las otras caracter?sticas de la fuente: potable....
 						printf("Segun los datos proporcionados, %s cumple las siguientes caracteristicas: \n", fuentes[i].nombre_fuente);
@@ -167,9 +159,7 @@ int main() {
 				printf("\n");
 				break;	   
 		}
-	}
-	 
-	while (opcion != 'C');
+	} while (opcion != 'C');
 
 		
 		
@@ -195,7 +185,7 @@ int main() {
 
 return 0;	
 }
-void serapotable(struct CAgua fuentes[],int num){
+//void serapotable(struct CAgua fuentes[],int num);
 	
 
 int potable_col(int dato, char nombre[]) { // dato=fuentes[i].coliforme   nombre=fuentes[i].nombre_fuente
@@ -213,20 +203,20 @@ int potable_col(int dato, char nombre[]) { // dato=fuentes[i].coliforme   nombre
 	return ;
 }
 
-void imprimir_dato(struct CAgua fuentes[], int i) {
-	printf("----------Fuente----------\n");
+int imprimirdato(struct CAgua fuentes[], int i) {
+	printf("-----Fuente-----\n");
 	printf("Nombre: %s\n", fuentes[i].nombre_fuente);
 	printf("pH: %.2f\n", fuentes[i].PH);
 	printf("Conductividad (microS/cm): %d\n", fuentes[i].conductividad);
 	printf("Turbidez (NTU): %d\n", fuentes[i].turbidez);
 	printf("Coliforme (UFC/100ml): %d\n", fuentes[i].coliformes);
-	
+	return ;
 }
 
 
 
 	
- 
+ /*
     char espotable[50] = "Es potable";
     char nopotable[50] = "NO es potable";
 	int i;
@@ -252,6 +242,7 @@ void imprimir_dato(struct CAgua fuentes[], int i) {
 				    
 			
 		}
+		*/
 		
 		
 float mediaph(struct CAgua fuentes[],int num){
