@@ -1,6 +1,6 @@
 # [Medio Ambiente]
 
-[DescripciÃ³n breve del proyecto a realizar (2-3 frases).]
+[Descripción breve del proyecto a realizar (2-3 frases).]
 
 ## Integrantes del equipo
 
