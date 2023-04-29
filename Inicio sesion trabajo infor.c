@@ -1,7 +1,5 @@
 #include <stdio.h>
 #include <string.h>
-
-
 #define MAXIMO 100 // Máximo número de usuarios registrados
 
 struct DATOS {
@@ -106,17 +104,16 @@ int main() {
 				users[numerousuarios] = nuevo;
 				numerousuarios++;
 			
-			
 			printf("\nGracias por registrarse. Se le redigira al menu de inicio.\n\n");
 			break;
 		case 3:
-			printf; ("\nHas salido del programa, vuelva pronto :)");
+			printf("\nHas salido del programa, vuelva pronto :)");
 			break;	
 		
 		default:
 			printf ("\nLa opcion no es valida. Se le redigira al menu de inicio.\n");
 		}
-	} while (modo !=3); 
+	} while (registrado != 1 || modo !=3); // No funciona!!!!
 	
 	return 0;
 }
