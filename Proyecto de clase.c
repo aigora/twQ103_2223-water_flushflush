@@ -2,18 +2,22 @@
 #include<string.h>
 #define Tam_Max 200
 #define NumerodFuentes 25
+#define MAXIMO 100 // Máximo número de usuarios registrados
 /* COMENTARIOS:
 	Hay que numerar las características obtenidas a partir de las funciones.
 
 */
 
+struct DATOS {
+    char usuario[100];
+    char contra[100];
+};
 struct CAgua{
 	char nombre_fuente[Tam_Max];
 	float PH;
 	int conductividad;
 	int turbidez;
 	int coliformes;
-
 };
 
 float mediaph(struct CAgua [],int num);
@@ -44,16 +48,29 @@ int main() {
 	char opcion;
 	char nombrebuscar[100];
 	int pH_inicio, pH_final;
-	
+// Variables para iniciar sesion o registrarse
+	int modo = 0;
+    int numerousuarios = 0;
+    int registrado = 0;
+    struct DATOS users[MAXIMO];
+    char usuario[50];
+    char contra[50];
 	
 //printf(""); // Ideas: "Bienvenidos al navegador Water_FlushFlush"...
 	//printf(""); // Presentacion ? del grupo: Water_FlushFlush es una navegador que sirve para buscar informaci?n sobre la calidad de agua...
 
+	// Usuarios pre-registrados
+    struct DATOS user1 = {"Javi", "1234"};
+    struct DATOS user2 = {"Alvaro", "1234"};
+    struct DATOS user3 = {"Alicia", "1234"};
+    struct DATOS user4 = {"Senxue", "1234"};
 
-
-
-
-
+    // Guardar usuarios pre-registrados
+    users[0] = user1;
+    users[1] = user2;
+    users[2] = user3;
+    users[3] = user4;
+    numerousuarios = 4;
 
   FILE *ficheros;
 // Abrir fichero
@@ -75,7 +92,8 @@ int main() {
 // Cerrar fichero
 	fclose(ficheros);
 
-// Programacion
+// Añadir aquí el iniciar sesión...
+
     do{ // El bucle do-while va a contener toda las programciones hasta el final, de manera que el usuario pueda hacer la b?squedad varias veces.
 	   fflush(stdin);
 		printf("A- Buscar por el nombre de la fuente.\n");
