@@ -64,6 +64,7 @@ int main() {
 	
 	ftablita= fopen("tablita.txt","w");
 	
+	ftablita=freopen("tablita.txt","w",stdout);
 	
 	if(ftablita == NULL)
     {
@@ -77,7 +78,7 @@ int main() {
    for(i=0;i<NumerodFuentes;i++){
    
    graficaPh(fuentes,i);
-  fprintf(ftablita,graficaPh(fuentes,i));
+ // printf(ftablita,graficaPh(fuentes,i));
      }
    
    fclose(ftablita);
