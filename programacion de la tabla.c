@@ -62,8 +62,7 @@ int main() {
 	
 	FILE*ftablita;
 	
-	ftablita= fopen("tablita.txt","w");
-	
+//	ftablita= fopen("tablita.txt","w");
 	ftablita=freopen("tablita.txt","w",stdout);
 	
 	if(ftablita == NULL)
