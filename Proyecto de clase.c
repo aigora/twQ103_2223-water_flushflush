@@ -1,10 +1,15 @@
 #include<stdio.h>
 #include<string.h>
-#define Tam_Max 200
-#define NumerodFuentes 25
+#define NumerodFuentes 25 // Numero de fuentes que hay en el fichero
+#define MAXIMO 100 // Máximo número de usuarios que se puedan registrar
+
+struct DATOS {
+    char usuario[100];
+    char contra[100];
+};
 
 struct CAgua{
-	char nombre_fuente[Tam_Max];
+	char nombre_fuente[100];
 	float PH;
 	int conductividad;
 	int turbidez;
@@ -19,25 +24,31 @@ int potable_cond(int);
 int potable_turbi(int, char[]); 
 int potable_col(int , char []);
 // Funciones para mostrar las graficas
-float mediaph(struct CAgua [],int num);
-void serapotable(struct CAgua [],int num);
-void grafica(struct CAgua [],int num);
-void potabilidad(struct CAgua [],int num);
-int potable(char fuente);
+void serapotable(struct CAgua [],int num);  // Comprueba si la fuente es potable del cien por cien (cumple todas las condiciones)
+void grafica(struct CAgua [],int num);  // Muestra una lista de las fuentes totalmente potables
+void potabilidad(struct CAgua [],int num);  // Calcula la cantidad de fuentes potables + porcentaje respecto al total
+float mediaph(struct CAgua [],int num);  // Calcula la media del pH entre todas las fuentes
+// Funciones utilizados en el nuevo fichero
+void graficaPh(struct CAgua fuentes[],int num);
+void graficaColi(struct CAgua fuentes[],int num);
 
-// FUNCION PRINCIPAL
+				// FUNCION PRINCIPAL
 int main() {
 // Variables para leer ficheros
 	char parametro[100], pH[100], conductividad[100], turbidez[100], coliforme[100];
+// Variables para iniciar sesion
+    struct DATOS users[MAXIMO];	
+	int modo = 0, i;
+    int numerousuarios = 0;
+    int registrado = 0;
+    char usuario[50], contra[50];
 // Variables para el buscador con switch-case
-	int i, fuente_encontrado=0, orden;
+	struct CAgua fuentes[NumerodFuentes];
+	int fuente_encontrado=0, orden;
 	char opcion;	
 	char nombrebuscar[100];
 	int pH_inicio, pH_final;
-// Variables que se usan para mostrar la estadistica en conjunto
-	float mediaPh=0,media;
-	struct CAgua fuentes[Tam_Max];
-		
+
 // Bienvenido
 	printf("Bienvenidos al navegador Water_FlushFlush!\n"); 
 	printf("Water_FlushFlush es un navegador que sirve para buscar informacion sobre la calidad del agua en su consumo,\nlos datos recogidos pertenecen al mes de mayo situado en los barrios de Madrid.\n"); 
@@ -51,7 +62,7 @@ int main() {
            	return 0;
 		   }
 // Leer fichero
-	fscanf(ficheros,"%s %s %s %s %s",parametro,pH,conductividad,turbidez,coliforme); // La primera linea del fichero no aporta
+	fscanf(ficheros,"%s %s %s %s %s",parametro,pH,conductividad,turbidez,coliforme); // La primera linea del fichero no va a ser guardado en un vector estructura
 	i=0;
 	while(fscanf(ficheros,"%s %f  %d %d  %d",fuentes[i].nombre_fuente,&fuentes[i].PH,&fuentes[i].conductividad,&fuentes[i].turbidez,&fuentes[i].coliformes) !=EOF) {
     	i++;
@@ -60,12 +71,113 @@ int main() {
 	fclose(ficheros);
 
 // Programacion
+    // Usuarios pre-registrados
+    struct DATOS user1 = {"Javi", "1234"};
+    struct DATOS user2 = {"Alvaro", "1234"};
+    struct DATOS user3 = {"Alicia", "1234"};
+    struct DATOS user4 = {"Senxue", "1234"};
+
+    // Guardar usuarios pre-registrados
+    users[0] = user1;
+    users[1] = user2;
+    users[2] = user3;
+    users[3] = user4;
+    numerousuarios = 4;
+    
+// Iniciar sesion
+    do{
+        // Menú de opciones
+        fflush(stdin);
+        printf("\nQue desea hacer?\n");  // ERROR: cambiar -> mas formal
+        printf("1. Iniciar sesion\n");
+        printf("2. Registrarse\n");
+        printf("3. Salir del programa\n");
+		printf("Introduzca la opcion deseada: ");
+        scanf("%d", &modo);
+
+        switch (modo) {
+            case 1: 
+                if (numerousuarios == 0) {    // ERROR: en la linea 84, ha declarado que numerousuarios = 4, pues nunca sera 0
+                    printf("\nNo hay usuarios registrados.\n");
+                    break;
+                }
+
+                printf("\nIntroduce tu nombre de usuario: ");
+                scanf("%s", usuario);
+                printf("Introduce tu contrasenya: ");
+                scanf("%s", contra);
+
+                // Comprobar si coincide con algún usuario registrado o pre-registrado
+                for (i = 0; i < numerousuarios; i++) {
+                    if (strcmp(users[i].usuario, usuario) == 0 && strcmp(users[i].contra, contra) == 0) {
+                        fflush(stdin);
+						printf("\nInicio de sesion exitoso!\n");//Lo de inicio de sesion esta 2 veces
+                        registrado = 1;
+                        break;
+                    }
+            	}
+
+                // Comprobar usuarios pre-registrados
+                if (strcmp(usuario, "Javi") == 0 && strcmp(contra, "1234") == 0) {
+                    fflush(stdin);
+                    registrado = 1;
+                    break;
+                } else if (strcmp(usuario, "Alvaro") == 0 && strcmp(contra, "1234") == 0) {
+                    fflush(stdin);
+                    registrado = 1;
+                    break;
+                } else if (strcmp(usuario, "Alicia") == 0 && strcmp(contra, "1234") == 0) {
+                    fflush(stdin);
+                    registrado = 1;
+                    break;
+                } else if (strcmp(usuario, "Senxue") == 0 && strcmp(contra, "1234") == 0) {
+                    fflush(stdin);
+                    registrado = 1;
+                    break;
+                }
+
+                if (!registrado) {
+                    printf("\nEl usuario o la contrasenya son incorrectos. Vuelve a intentarlo.\n");
+                }
+
+                break;
+
+            case 2: // Registrarse
+                if (numerousuarios == MAXIMO) {
+                    printf("\nSe ha alcanzado el numero maximo de cuentas que podemos registrar.\n");
+                    break;
+                }
+                printf ("Introduce un nuevo usuario: ");
+				scanf("%s", usuario);
+				printf ("Introduce tu contrasenya: ");
+				scanf("%s", contra);
+			
+				struct DATOS nuevo;
+				strcpy(nuevo.usuario, usuario);
+				strcpy(nuevo.contra, contra);
+				users[numerousuarios] = nuevo;
+				numerousuarios++;
+			
+			printf("\nGracias por registrarse. Se le redigira al menu de inicio.\n\n");
+			break;
+		case 3:
+			printf("\nHas salido del programa, vuelva pronto :)");
+			return 0;
+			break;	
+		
+		default:
+			printf ("\nLa opcion no es valida. Se le redigira al menu de inicio.\n");
+		}
+	} while (registrado == 0);
+	printf("\n");
+// Buscador
     do{ 
 		fflush(stdin);
 		printf("A- Buscar por el nombre de la fuente.\n");
 		printf("B- Buscar por un intervalo de pH.\n");
-		printf("C- Mostrar la estadistica de todas las fuentes potables.\n");	
-		printf("D- Salir del programa.\n");	
+		printf("C- Mostrar la estadistica de todas las fuentes potables.\n");
+		printf("D- Mostrar las fuentes potables dependiendo de \n   los parametros(pH, conductividad, turbidez y coliforme)\n");
+		printf("E- Salir del programa.\n");	
 		printf("Introduzca la opcion deseada: ");
 		scanf("%c", &opcion);
 		switch (opcion) {
@@ -73,12 +185,12 @@ int main() {
 			case 'a':
 				printf("Introducir el nombre de la fuente: ");
 				scanf("%s", nombrebuscar);
-				for(i=0; i<Tam_Max; i++) {
+				for(i=0; i<NumerodFuentes; i++) {
 					orden=strcmp(fuentes[i].nombre_fuente, nombrebuscar);
 					if(orden==0) {
 						fuente_encontrado=1;
 						imprimir_dato(fuentes, i);
-						printf("Segun los datos proporcionados, %s cumple las siguientes caracteristicas: \n", fuentes[i].nombre_fuente);
+						printf("Segun los datos proporcionados, %s cumple con las siguientes caracteristicas: \n", fuentes[i].nombre_fuente);
 						potable_Ph(fuentes,i);
 						potable_cond(fuentes[i].conductividad);
 						potable_turbi(fuentes[i].turbidez, fuentes[i].nombre_fuente);
@@ -104,15 +216,17 @@ int main() {
 					if((pH_inicio<=fuentes[i].PH) && (pH_final>=fuentes[i].PH)) {
 						fuente_encontrado=1;
 				     	imprimir_dato(fuentes, i);
-						serapotable(fuentes,i); // Comprueba que cumple con todas las condiciones
-						printf("Segun los datos proporcionados, %s cumple las siguientes caracteristicas: \n", fuentes[i].nombre_fuente);
+						serapotable(fuentes,i); 
+						printf("Segun los datos proporcionados, %s cumple con las siguientes caracteristicas: \n", fuentes[i].nombre_fuente);
 						potable_Ph(fuentes,i);
 						potable_cond(fuentes[i].conductividad);
 						potable_turbi(fuentes[i].turbidez, fuentes[i].nombre_fuente);
 						potable_col(fuentes[i].coliformes, fuentes[i].nombre_fuente);
+						printf("En resumen, el agua del %s ", fuentes[i].nombre_fuente);
+						serapotable(fuentes,i);	
 					}
 				}
-				if(fuente_encontrado == 0) {
+				if(fuente_encontrado == 0) {  // ERROR: Seria que si el intervalo ...
 					printf("No encontrado\n");
 				}
 				printf("\n");
@@ -120,23 +234,52 @@ int main() {
 				
 			case 'C':
 			case 'c':
+				printf("\n");
 				grafica(fuentes,NumerodFuentes);
+				printf("-----Resultados-----\n");
 				printf("%f",mediaph(fuentes,NumerodFuentes));
 				potabilidad(fuentes,NumerodFuentes);
+				printf("\n");
 				break;
 				
 			case 'D':
 			case 'd':
-				printf("Has salido del programa.\n");
-				printf("\n");
+				// Crear un nuevo fichero
+				ficheros=freopen("tabla water flush flush.txt","w",stdout);
+				if(ficheros == NULL) {  // ERROR: ??
+    				printf("No se ha podido crear el nuevo fichero.\n");
+    				return 0;
+				}
+				// Escribir en el nuevo fichero
+				fprintf(ficheros,"PH potables:");
+				fprintf(ficheros,"\tcoliformes potables:");
+				fprintf(ficheros,"\t\tconductividad potables:");
+				fprintf(ficheros,"\t\t\tturbidez potables:");
+				fprintf(ficheros,"\t\t\t\tpotable total:\n");
+				for(i=0;i<NumerodFuentes;i++){
+					graficaPh(fuentes,i);
+					 // printf(ftablita,graficaPh(fuentes,i));
+				}
+				/*for(i=0;i<NumerodFuentes;i++){
+				graficaColi(fuentes,i);
+				// printf(ftablita,graficaPh(fuentes,i));
+				}
+				*/
+				// Cerrar el nuevo fichero
+				fclose(ficheros);
 				break;
+				
+			case 'E':
+			case 'e':
+				printf("Has salido del buscador.\n");
+				return 0;
 				
 			default:
 				printf("Opcion incorrecta.\n");
 				printf("\n");
 				break; 
 		}
-	} while(opcion != 'D'); 
+	} while(opcion != 'E' && opcion != 'e'); 
 
 	return 0;	
 }
@@ -224,7 +367,31 @@ void serapotable(struct CAgua fuentes[],int num){
 		printf("%s\n",nopotable);
 	}	
 }
-		
+
+void grafica(struct CAgua fuentes[],int num) {
+	int i;
+	
+	printf("-----GRAFICA DE FUENTES POTABLES-----\n");
+	printf("Nombre\t\tpH\tConductividad\tTurbidez\tColiforme\n");
+	for(i=0;i<=NumerodFuentes;i++) {
+		if( fuentes[i].coliformes<1 && (fuentes[i].PH>6.5 && fuentes[i].PH<9.5) && (fuentes[i].conductividad >50 && fuentes[i].conductividad <500) && fuentes[i].turbidez<1) {
+        	printf("%s\t%.2f\t%d\t\t%d\t\t%d\t \n",fuentes[i].nombre_fuente,fuentes[i].PH,fuentes[i].conductividad,fuentes[i].turbidez,fuentes[i].coliformes);
+		}
+	}
+}
+
+void potabilidad(struct CAgua fuentes[],int num) {
+	int potable=0, i;
+	
+	for(i=0;i<num;i++) {
+		if( fuentes[i].coliformes<1 && (fuentes[i].PH>6.5 && fuentes[i].PH<9.5) && (fuentes[i].conductividad >50 && fuentes[i].conductividad <500) && fuentes[i].turbidez<1) {		
+			potable++;			
+		}
+	}
+	printf("\nNumero de fuentes con agua potable: %d \n",potable);
+	printf("Porcentaje de las fuentes potables: %f  \n",100*(float)potable/ NumerodFuentes);
+}
+
 float mediaph(struct CAgua fuentes[],int num){
 	float suma=0;
 	int i;
@@ -232,30 +399,36 @@ float mediaph(struct CAgua fuentes[],int num){
 	for(i=0;i<num;i++) {
 		suma += fuentes[i].PH;
 	}
-	printf("La media de ph es de : ");
+	printf("Media del pH: ");
 	return (suma/num);
 }
 
-void grafica(struct CAgua fuentes[],int num) {
+// Funciones utiizados en el nuevo fichero
+void graficaPh(struct CAgua fuentes[],int num) {
 	int i;
 	
-	printf("GRAFICA DE FUENTES POTABLES\n");
-	for(i=0;i<=NumerodFuentes;i++) {
-		if( fuentes[i].coliformes<1 && (fuentes[i].PH>6.5 && fuentes[i].PH<9.5) && (fuentes[i].conductividad >50 && fuentes[i].conductividad <500) && fuentes[i].turbidez<1) {
-        	printf("%s\t%.2f\t%d\t%d\t%d\t \n",fuentes[i].nombre_fuente,fuentes[i].PH,fuentes[i].conductividad,fuentes[i].turbidez,fuentes[i].coliformes);
-		}
+	if(  (fuentes[num].PH>6.5 && fuentes[num].PH<9.5) ) {
+        printf("%s\n",fuentes[num].nombre_fuente);
+	}
+	if(  (fuentes[num].coliformes<2 ) ) {
+        printf("\t\t\t\t%s\n",fuentes[num].nombre_fuente);
+	}
+	if((fuentes[num].conductividad >50 && fuentes[num].conductividad <500)){
+	    printf("                       \t\t\t\t\t\t\t%s\n",fuentes[num].nombre_fuente);
+	}
+	if((fuentes[num].turbidez<1)) {
+		printf("                                 \t\t\t\t\t\t\t\t\t\t\t\t%s\n",fuentes[num].nombre_fuente);
+	}
+	if((fuentes[num].turbidez<1)&&(fuentes[num].conductividad >50 && fuentes[num].conductividad <500)&&(fuentes[num].coliformes<2 )&&(fuentes[num].PH>6.5 && fuentes[num].PH<9.5)){
+		printf("                              \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t%s\n",fuentes[num].nombre_fuente);
 	}
 }
-
-void potabilidad(struct CAgua fuentes[],int num) {
+void graficaColi(struct CAgua fuentes[],int num){
 	int potable=0,i;
 	
-	for(i=0;i<num;i++) {
-		if( fuentes[i].coliformes<1 && (fuentes[i].PH>6.5 && fuentes[i].PH<9.5) && (fuentes[i].conductividad >50 && fuentes[i].conductividad <500) && fuentes[i].turbidez<1) {		
-			potable++;			
-		}
+	//printf("GRAFICA DE FUENTES POTABLES\n");
+	if(  (fuentes[num].coliformes<2 ) ) {
+        //potable++;
+        printf("%s\n",fuentes[num].nombre_fuente);
 	}
-	printf("\n Como se puede ver :\nHay una cantidad de agua potable de  %d fuentes \n ",potable);
-	printf("El porcentaje de las fuentes  que son potables es de :%f  \n",100*(float)potable/ NumerodFuentes);
 }
-
