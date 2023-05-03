@@ -112,13 +112,13 @@ void serapotable(struct CAgua fuentes[],int num){
         		  
 					{
         				
-		           printf("%s\n",espotable);
+		           		printf("%s\n",espotable);
 		           
         				
 					}
 				else{
 				 
-				 printf("%s\n",nopotable);
+				 		printf("%s\n",nopotable);
 				   
 				    }
 	}
@@ -144,19 +144,19 @@ void graficaPh(struct CAgua fuentes[],int num){
 	           if((fuentes[num].conductividad >50 && fuentes[num].conductividad <500)){
 	           	
 	           	
-	           	printf("                       \t\t\t\t\t\t\t%s\n",fuentes[num].nombre_fuente);
+	           			printf("                       \t\t\t\t\t\t\t%s\n",fuentes[num].nombre_fuente);
 	           	
-			   }
+			        }
 				 if((fuentes[num].turbidez<1)){
 	           	
 	           	
-	           	printf("                                 \t\t\t\t\t\t\t\t\t\t\t\t%s\n",fuentes[num].nombre_fuente);
+	           			printf("                                 \t\t\t\t\t\t\t\t\t\t\t\t%s\n",fuentes[num].nombre_fuente);
 	           	
-			   }
+			   		}
 			   if((fuentes[num].turbidez<1)&&(fuentes[num].conductividad >50 && fuentes[num].conductividad <500)&&(fuentes[num].coliformes<2 )&&(fuentes[num].PH>6.5 && fuentes[num].PH<9.5)){
 			   	
-			   		printf("                              \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t%s\n",fuentes[num].nombre_fuente);
-			   }
+			   			printf("                              \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t%s\n",fuentes[num].nombre_fuente);
+			   		}
 		
 
 }
@@ -189,7 +189,7 @@ void potabilidad(struct CAgua fuentes[],int num){
 	
 	for(i=0;i<num;i++){
 	
-			if( fuentes[i].coliformes<1 && (fuentes[i].PH>6.5 && fuentes[i].PH<9.5) && (fuentes[i].conductividad >50 && fuentes[i].conductividad <500) && fuentes[i].turbidez<1)// fuente[i].coliformes<0 && fuente[i].PH>6.5 && fuente[i].PH<9.5 && (fuente[i].conductividad >50 && fuente[i].conductividad <500) && fuente[i].turbidez<1
+		if( fuentes[i].coliformes<1 && (fuentes[i].PH>6.5 && fuentes[i].PH<9.5) && (fuentes[i].conductividad >50 && fuentes[i].conductividad <500) && fuentes[i].turbidez<1)// fuente[i].coliformes<0 && fuente[i].PH>6.5 && fuente[i].PH<9.5 && (fuente[i].conductividad >50 && fuente[i].conductividad <500) && fuente[i].turbidez<1
         		  
 			{
         				
