@@ -36,11 +36,6 @@ int calidad_del_agua(int);
 
 
 int main() {
-// Variables que se usan ...
-	float mediaPh=0,media;
-	struct CAgua fuentes[Tam_Max];
-	
-	
 // Variables para leer ficheros
 	char parametro[100], pH[100], conductividad[100], turbidez[100], coliforme[100];
 // Variables para el buscador con switch-case
@@ -48,30 +43,25 @@ int main() {
 	char opcion;	
 	char nombrebuscar[100];
 	int pH_inicio, pH_final;
-	
-	
-//printf(""); // Ideas: "Bienvenidos al navegador Water_FlushFlush"...
-	//printf(""); // Presentacion ? del grupo: Water_FlushFlush es una navegador que sirve para buscar informaci?n sobre la calidad de agua...
+// Variables que se usan para mostrar la estadística en conjunto
+	float mediaPh=0,media;
+	struct CAgua fuentes[Tam_Max];
+		
+// Bienvenido
+	printf("Bienvenidos al navegador Water_FlushFlush!\n"); 
+	printf("Water_FlushFlush es un navegador que sirve para buscar informacion sobre la calidad del agua en su consumo,\nlos datos recogidos pertenece al mes de mayo situado en los barrios de Madrid.\n"); 
 
-
-
-
-
-
-
-  FILE *ficheros;
 // Abrir fichero
-  ficheros = fopen("Parametro_5.txt","r");
-   if (ficheros == NULL)
+	FILE *ficheros;
+	ficheros = fopen("Parametro_5.txt","r");
+	if (ficheros == NULL)
            {
            	printf("Error,no puede abrir el fichero");
            	return 0;
 		   }
 // Leer fichero
-	fscanf(ficheros,"%s %s %s %s %s",parametro,pH,conductividad,turbidez,coliforme); 
-	// La primera línea del fichero no aporta
+	fscanf(ficheros,"%s %s %s %s %s",parametro,pH,conductividad,turbidez,coliforme); // La primera línea del fichero no aporta
 	i=0;
-    
 	while(fscanf(ficheros,"%s %f  %d %d  %d",fuentes[i].nombre_fuente,&fuentes[i].PH,&fuentes[i].conductividad,&fuentes[i].turbidez,&fuentes[i].coliformes) !=EOF){
 		
     	i++;
@@ -84,7 +74,8 @@ int main() {
 	   fflush(stdin);
 		printf("A- Buscar por el nombre de la fuente.\n");
 		printf("B- Buscar por un intervalo de pH.\n");
-		printf("C- Salir del programa.\n");	
+		printf("C- Mostrar la estadistica de todas las fuentes potables.\n");	
+		printf("D- Salir del programa.\n");	
 		printf("Introduzca la opcion deseada: ");
 		scanf("%c", &opcion);
 		switch (opcion) {
@@ -97,13 +88,9 @@ int main() {
 					orden=strcmp(fuentes[i].nombre_fuente, nombrebuscar);
 					if(orden==0) {
 						fuente_encontrado=1;
-
-							imprimir_dato(fuentes, i);
+						imprimir_dato(fuentes, i);
 						serapotable(fuentes,i);
 
-					
-
-						// A?adir aqu? las otras caracter?sticas de la fuente: potable....
 						printf("Segun los datos proporcionados, %s cumple las siguientes caracteristicas: \n", fuentes[i].nombre_fuente);
 						// potable_PH
 						potable_cond(fuentes[i].conductividad);
@@ -111,8 +98,7 @@ int main() {
 						potable_col(fuentes[i].coliformes, fuentes[i].nombre_fuente);	
 						break;
 					} 
-					
-						 // ???? Que salga del programa (elegir otra vez la opcion) o que vuelva a introducir el nombre ???
+		
 					}
 					
 					if(fuente_encontrado == 0) {
@@ -134,30 +120,28 @@ int main() {
 						fuente_encontrado=1;
 				     	imprimir_dato(fuentes, i);
 						serapotable(fuentes,i);
-						
-
-						
-
-						// A?adir aqu? las otras caracter?sticas de la fuente: potable.... 
-						//Creo que esto solo se deberia ejecutar en un for junto a otras variables que hagan lo mismo con el ph etc
-						/*printf("Segun los datos proporcionados, %s cumple las siguientes caracteristicas: \n", fuentes[i].nombre_fuente);
-						potable_col(fuentes[i].coliformes, fuentes[i].nombre_fuente);*/
-						printf("Conductividad (microS/cm): %d\n", fuentes[i].conductividad);					
-						printf("Aportaciones de conductividad sobre la calidad del agua: \n",fuentes[i].conductividad,fuentes[i].nombre_fuente);
+						 
+						printf("Segun los datos proporcionados, %s cumple las siguientes caracteristicas: \n", fuentes[i].nombre_fuente);
+						// potable_PH
 						potable_cond(fuentes[i].conductividad);
-
+						// potable_turb
+						potable_col(fuentes[i].coliformes, fuentes[i].nombre_fuente);
 					}
-					
-					
 				}
 				 if(fuente_encontrado == 0) {
 						printf("No encontrado\n");
-						 // ???? Que salga del programa (elegir otra vez la opcion) o que vuelva a introducir el nombre ???
 					}
 				printf("\n");
 				
 				break;
 			case 'C':
+			case 'c':
+				grafica(fuentes,NumerodFuentes);
+				printf("%f",mediaph(fuentes,NumerodFuentes));
+				potabilidad(fuentes,NumerodFuentes);
+				break;
+			case 'D':
+			case 'd':
 				printf("Has salido del programa.\n");
 				printf("\n");
 				break;
@@ -167,33 +151,10 @@ int main() {
 				break;	   
 		}
 	}
-	 
-	while (opcion != 'C');
-
-		
-		
-		
-
-		
-		grafica(fuentes,NumerodFuentes);
-		
-		//Esto va al final como resumen
-		
-		printf("%f",mediaph(fuentes,NumerodFuentes));
-	
-	
-     potabilidad(fuentes,NumerodFuentes);
-	
-	
-	
-	
-	
-	
-
-	
 
 return 0;	
 }
+
 // Función para imprimir datos del fichero 
 void imprimir_dato(struct CAgua fuentes[], int i) {
 	printf("----------Fuente----------\n");
@@ -204,6 +165,7 @@ void imprimir_dato(struct CAgua fuentes[], int i) {
 	printf("Coliforme (UFC/100ml): %d\n", fuentes[i].coliformes);
 	
 }
+
 // Funciones para conocer la característica de la fuente de acuerdo con su valor de los parámetros
 // potable_PH
 int potable_cond(int conductividad) {
@@ -238,26 +200,18 @@ int potable_col(int dato, char nombre[]) { // dato=fuentes[i].coliforme   nombre
 	
 	return ;
 }
+
 // Funciones utilizados para mostrar la gráfica
 void serapotable(struct CAgua fuentes[],int num){
  
     char espotable[50] = "Es potable";
     char nopotable[50] = "NO es potable";
 	int i;
-
-	             
-	           
 	
-				 if( fuentes[num].coliformes<1 && (fuentes[num].PH>6.5 && fuentes[num].PH<9.5) && (fuentes[num].conductividad >50 && fuentes[num].conductividad <500) && fuentes[num].turbidez<1)// fuente[i].coliformes<0 && fuente[i].PH>6.5 && fuente[i].PH<9.5 && (fuente[i].conductividad >50 && fuente[i].conductividad <500) && fuente[i].turbidez<1
-        		  
-					{
-        				
-		           printf("%s\n",espotable);
-		           
-        				
-					}
-				else{
-				 
+	if( fuentes[num].coliformes<1 && (fuentes[num].PH>6.5 && fuentes[num].PH<9.5) && (fuentes[num].conductividad >50 && fuentes[num].conductividad <500) && fuentes[num].turbidez<1) {	
+		printf("%s\n",espotable);		
+	}
+	else{
 				 printf("%s\n",nopotable);
 				   
 				    }
