@@ -12,6 +12,7 @@ struct CAgua{
 
 };
 void graficaPh(struct CAgua fuentes[],int num);
+void graficaColi(struct CAgua fuentes[],int num);
 void serapotable(struct CAgua [],int num);
 void potabilidad(struct CAgua fuentes[],int num);
 int main() {
@@ -63,7 +64,7 @@ int main() {
 	FILE*ftablita;
 	
 //	ftablita= fopen("tablita.txt","w");
-	ftablita=freopen("tablita.txt","w",stdout);
+	ftablita=freopen("tabla water flush flush.txt","w",stdout);
 	
 	if(ftablita == NULL)
     {
@@ -73,12 +74,26 @@ int main() {
     }
 
 
-   fprintf(ftablita,"PH potables:  \n");
+   fprintf(ftablita,"PH potables:");
+  fprintf(ftablita,"\tcoliformes potables:");
+  fprintf(ftablita,"\t\tconductividad potables:");
+  fprintf(ftablita,"\t\t\tturbidez potables:");
+  fprintf(ftablita,"\t\t\t\tpotable total:\n");
    for(i=0;i<NumerodFuentes;i++){
    
    graficaPh(fuentes,i);
+   
  // printf(ftablita,graficaPh(fuentes,i));
      }
+     
+   
+    /*for(i=0;i<NumerodFuentes;i++){
+   
+   graficaColi(fuentes,i);
+ // printf(ftablita,graficaPh(fuentes,i));
+     }
+   */
+   
    
    fclose(ftablita);
 return 0;
@@ -117,14 +132,51 @@ void graficaPh(struct CAgua fuentes[],int num){
 	
 				 if(  (fuentes[num].PH>6.5 && fuentes[num].PH<9.5) )// fuente[i].coliformes<0 && fuente[i].PH>6.5 && fuente[i].PH<9.5 && (fuente[i].conductividad >50 && fuente[i].conductividad <500) && fuente[i].turbidez<1
         			{
-        				 potable++;
+        				// potable++;
         			   printf("%s\n",fuentes[num].nombre_fuente);
 		   
-		   
-        			
-					}
+                   }
+			  if(  (fuentes[num].coliformes<2 ) )// fuente[i].coliformes<0 && fuente[i].PH>6.5 && fuente[i].PH<9.5 && (fuente[i].conductividad >50 && fuente[i].conductividad <500) && fuente[i].turbidez<1
+        			{
+        				 //potable++;
+        			   printf("\t\t\t\t%s\n",fuentes[num].nombre_fuente);
+		   			}
+	           if((fuentes[num].conductividad >50 && fuentes[num].conductividad <500)){
+	           	
+	           	
+	           	printf("                       \t\t\t\t\t\t\t%s\n",fuentes[num].nombre_fuente);
+	           	
+			   }
+				 if((fuentes[num].turbidez<1)){
+	           	
+	           	
+	           	printf("                                 \t\t\t\t\t\t\t\t\t\t\t\t%s\n",fuentes[num].nombre_fuente);
+	           	
+			   }
+			   if((fuentes[num].turbidez<1)&&(fuentes[num].conductividad >50 && fuentes[num].conductividad <500)&&(fuentes[num].coliformes<2 )&&(fuentes[num].PH>6.5 && fuentes[num].PH<9.5)){
+			   	
+			   		printf("                              \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t%s\n",fuentes[num].nombre_fuente);
+			   }
 		
 
+}
+void graficaColi(struct CAgua fuentes[],int num){
+	
+	
+		int potable=0,i;
+	
+	//printf("GRAFICA DE FUENTES POTABLES\n");
+	
+	
+	
+				 if(  (fuentes[num].coliformes<2 ) )// fuente[i].coliformes<0 && fuente[i].PH>6.5 && fuente[i].PH<9.5 && (fuente[i].conductividad >50 && fuente[i].conductividad <500) && fuente[i].turbidez<1
+        			{
+        				 //potable++;
+        			   printf("%s\n",fuentes[num].nombre_fuente);
+		   			}
+	
+	
+	
 }
 void potabilidad(struct CAgua fuentes[],int num){
 	
