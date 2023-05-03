@@ -4,7 +4,6 @@
 #define NumerodFuentes 25
 /* COMENTARIOS:
 	Hay que numerar las características obtenidas a partir de las funciones.
-//prueba
 */
 
 struct CAgua{
