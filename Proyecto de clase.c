@@ -44,7 +44,7 @@ int main() {
 
 // Abrir fichero
 	FILE *ficheros;
-	ficheros = fopen("Parametro_5.txt","r");
+	ficheros = fopen("202304_Lavapies.txt","r");
 	if (ficheros == NULL)
            {
            	printf("Error,no puede abrir el fichero");
@@ -53,8 +53,7 @@ int main() {
 // Leer fichero
 	fscanf(ficheros,"%s %s %s %s %s",parametro,pH,conductividad,turbidez,coliforme); // La primera linea del fichero no aporta
 	i=0;
-	while(fscanf(ficheros,"%s %f  %d %d  %d",fuentes[i].nombre_fuente,&fuentes[i].PH,&fuentes[i].conductividad,&fuentes[i].turbidez,&fuentes[i].coliformes) !=EOF){
-		
+	while(fscanf(ficheros,"%s %f  %d %d  %d",fuentes[i].nombre_fuente,&fuentes[i].PH,&fuentes[i].conductividad,&fuentes[i].turbidez,&fuentes[i].coliformes) !=EOF) {
     	i++;
 	}
 // Cerrar fichero
@@ -79,13 +78,13 @@ int main() {
 					if(orden==0) {
 						fuente_encontrado=1;
 						imprimir_dato(fuentes, i);
-						serapotable(fuentes,i);
-
 						printf("Segun los datos proporcionados, %s cumple las siguientes caracteristicas: \n", fuentes[i].nombre_fuente);
 						potable_Ph(fuentes,i);
 						potable_cond(fuentes[i].conductividad);
 						potable_turbi(fuentes[i].turbidez, fuentes[i].nombre_fuente);
 						potable_col(fuentes[i].coliformes, fuentes[i].nombre_fuente);	
+						printf("En resumen, el agua del %s ", fuentes[i].nombre_fuente);
+						serapotable(fuentes,i);	
 						break;
 					}
 				}	
@@ -204,18 +203,18 @@ int potable_col(int dato, char nombre[]) {
 		printf("\t4.-Es posible su consumicion de acuerdo con el valor del coliforme.\n");
 	}
 	else if(dato==2) {
-		printf("\t4.-El valor del coliforme ha llegado al limite.\nATENCiON: No es recomendable \t   beber el agua del %s.\n", nombre);
+		printf("\t4.-El valor del coliforme ha llegado al limite. No es recomendable \n\t   beber el agua del %s.\n", nombre);
 	}
 	else if(dato>2) {
-		printf("\t4.-El valor del coliforme ha alcanzado el limite.\nATENCION: Beber agua del %s es \t   posible causar enfermedades.\n", nombre);
+		printf("\t4.-El valor del coliforme ha alcanzado el limite. Beber agua del %s es \n\t   posible causar enfermedades.\n", nombre);
 	}
 	return ;
 }
 
 // Funciones utilizados para mostrar la estadistica
 void serapotable(struct CAgua fuentes[],int num){
-    char espotable[50] = "Es potable";
-    char nopotable[50] = "NO es potable";
+    char espotable[100] = "es totalmente potable y puedes beber sin precaucion.";
+    char nopotable[100] = "no es recomendable su consumo debido a las causas comentadas previamente.";
 	int i;
 	
 	if( fuentes[num].coliformes<1 && (fuentes[num].PH>6.5 && fuentes[num].PH<9.5) && (fuentes[num].conductividad >50 && fuentes[num].conductividad <500) && fuentes[num].turbidez<1) {	
@@ -231,7 +230,7 @@ float mediaph(struct CAgua fuentes[],int num){
 	int i;
 	
 	for(i=0;i<num;i++) {
-		suma +=  fuentes[i].PH;
+		suma += fuentes[i].PH;
 	}
 	printf("La media de ph es de : ");
 	return (suma/num);
@@ -259,6 +258,4 @@ void potabilidad(struct CAgua fuentes[],int num) {
 	printf("\n Como se puede ver :\nHay una cantidad de agua potable de  %d fuentes \n ",potable);
 	printf("El porcentaje de las fuentes  que son potables es de :%f  \n",100*(float)potable/ NumerodFuentes);
 }
-
-
 
