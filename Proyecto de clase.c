@@ -34,6 +34,7 @@ void imprimir_dato(struct CAgua [], int );
 
 int calidad_del_agua(int);
 
+void potable_Ph(struct CAgua fuentes[],int num);
 
 
 int main() {
@@ -93,7 +94,7 @@ int main() {
 						serapotable(fuentes,i);
 
 						printf("Segun los datos proporcionados, %s cumple las siguientes caracteristicas: \n", fuentes[i].nombre_fuente);
-						// potable_PH
+						potable_Ph(fuentes,i);
 						potable_cond(fuentes[i].conductividad);
 						ecosist_turbi(fuentes[i].turbidez, fuentes[i].nombre_fuente);
 						potable_col(fuentes[i].coliformes, fuentes[i].nombre_fuente);	
@@ -123,7 +124,7 @@ int main() {
 						serapotable(fuentes,i);
 						 
 						printf("Segun los datos proporcionados, %s cumple las siguientes caracteristicas: \n", fuentes[i].nombre_fuente);
-						// potable_PH
+						potable_Ph(fuentes,i);
 						potable_cond(fuentes[i].conductividad);
 						ecosist_turbi(fuentes[i].turbidez, fuentes[i].nombre_fuente);
 						potable_col(fuentes[i].coliformes, fuentes[i].nombre_fuente);
@@ -299,6 +300,38 @@ void potabilidad(struct CAgua fuentes[],int num){
 	printf("El porcentaje de las fuentes  que son potables es de :%f  \n",100*(float)potable/ NumerodFuentes);
 	
 
+}
+void potable_Ph(struct CAgua fuentes[],int num){
+	
+	
+	      if (fuentes[num].PH<=6.5 )// fuente[i].coliformes<0 && fuente[i].PH>6.5 && fuente[i].PH<9.5 && (fuente[i].conductividad >50 && fuente[i].conductividad <500) && fuente[i].turbidez<1
+        		  
+			{
+        		printf("No es recomendable el consumo de agua\n");
+				printf(" El agua dura, o el agua con un pH alto contiene \nuna gran concentración de minerales disueltos.");
+		         printf("\n ademas,puede poseer  minerales como el calcio los cuales pueden causar \n problemas con su posicionamiento en superficies de ceramica y por su gusto agrio.\n");
+		    }
+	
+	
+	 
+	
+			else if (fuentes[num].PH>6.5 && fuentes[num].PH<8.5)// fuente[i].coliformes<0 && fuente[i].PH>6.5 && fuente[i].PH<9.5 && (fuente[i].conductividad >50 && fuente[i].conductividad <500) && fuente[i].turbidez<1
+        		  
+			{
+        		printf("Es posible el consumo de agua\n");		
+		         
+		    }
+		    else if(fuentes[num].PH>=8.5){
+		    	
+		    	printf("NO es posible el consumo de agua\n");
+		    	printf("ya que esta fuente tiende a llevar grandes concentraciones de metales como el manganeso y hierro.\n");
+		    	printf("Esto se puede dar como consecuencia de tuberias oxidadas\n");
+		    	
+			}
+	
+	
+	
+	
 }
 
 
