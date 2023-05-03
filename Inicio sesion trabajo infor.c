@@ -113,6 +113,7 @@ int main() {
 			break;
 		case 3:
 			printf("\nHas salido del programa, vuelva pronto :)");
+			return 0;
 			break;	
 		
 		default:
