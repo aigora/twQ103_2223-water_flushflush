@@ -176,7 +176,7 @@ int main() {
 		printf("A- Buscar por el nombre de la fuente.\n");
 		printf("B- Buscar por un intervalo de pH.\n");
 		printf("C- Mostrar la estadistica de todas las fuentes potables.\n");
-		printf("D- Mostrar las fuentes potables dependiendo de \n   los parametros(pH, conductividad, turbidez y coliforme)\n");
+		printf("D- Desea tener un fichero que muestre  las fuentes potables dependiendo de \n   los parametros(pH, conductividad, turbidez y coliforme)\n");
 		printf("E- Salir del programa.\n");	
 		printf("Introduzca la opcion deseada: ");
 		scanf("%c", &opcion);
@@ -267,6 +267,7 @@ int main() {
 				*/
 				// Cerrar el nuevo fichero
 				fclose(ficheros);
+				return 0;
 				break;
 				
 			case 'E':

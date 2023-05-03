@@ -41,7 +41,7 @@ int main() {
 
   FILE *ficheros;
 // Abrir fichero
-  ficheros = fopen("Parametro_5.txt","r");
+  ficheros = fopen("202304_Lavapies.txt","r");
    if (ficheros == NULL)
            {
            	printf("Error,no puede abrir el fichero");
@@ -74,11 +74,13 @@ int main() {
     }
 
 
+  
    fprintf(ftablita,"PH potables:");
   fprintf(ftablita,"\tcoliformes potables:");
   fprintf(ftablita,"\t\tconductividad potables:");
   fprintf(ftablita,"\t\t\tturbidez potables:");
   fprintf(ftablita,"\t\t\t\tpotable total:\n");
+  
    for(i=0;i<NumerodFuentes;i++){
    
    graficaPh(fuentes,i);
