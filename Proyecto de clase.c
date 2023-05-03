@@ -16,6 +16,7 @@ struct CAgua{
 
 };
 
+
 float mediaph(struct CAgua [],int num);
 
 void serapotable(struct CAgua [],int num);
@@ -30,19 +31,21 @@ int potable_col(int , char []); // Comprobar si el agua es potable de acuerdo co
 
 void imprimir_dato(struct CAgua [], int );
 
+int calidad_del_agua(int);
+
 
 
 int main() {
 // Variables que se usan ...
 	float mediaPh=0,media;
 	struct CAgua fuentes[Tam_Max];
-	int Cfuentes=0;
-	float porcentaje;
+	
+	
 // Variables para leer ficheros
 	char parametro[100], pH[100], conductividad[100], turbidez[100], coliforme[100];
 // Variables para el buscador con switch-case
 	int i, fuente_encontrado=0, orden;
-	char opcion;
+	char opcion;	
 	char nombrebuscar[100];
 	int pH_inicio, pH_final;
 	
@@ -104,6 +107,10 @@ int main() {
 					    //Creo que esto solo se deberia ejecutar en un for junto a otras variables que hagan lo mismo con el ph etc
 					/*	printf("Segun los datos proporcionados, %s cumple las siguientes caracteristicas: \n", fuentes[i].nombre_fuente);
 						potable_col(fuentes[i].coliformes, fuentes[i].nombre_fuente);*/
+			            printf("Conductividad (microS/cm): %d\n", fuentes[i].conductividad);					
+						printf("Aportaciones de conductividad sobre la calidad del agua: \n",fuentes[i].conductividad,fuentes[i].nombre_fuente);
+						calidad_del_agua(fuentes[i].conductividad);
+
 						break;
 					} 
 					
@@ -137,7 +144,10 @@ int main() {
 						//Creo que esto solo se deberia ejecutar en un for junto a otras variables que hagan lo mismo con el ph etc
 						/*printf("Segun los datos proporcionados, %s cumple las siguientes caracteristicas: \n", fuentes[i].nombre_fuente);
 						potable_col(fuentes[i].coliformes, fuentes[i].nombre_fuente);*/
-						
+						printf("Conductividad (microS/cm): %d\n", fuentes[i].conductividad);					
+						printf("Aportaciones de conductividad sobre la calidad del agua: \n",fuentes[i].conductividad,fuentes[i].nombre_fuente);
+						calidad_del_agua(fuentes[i].conductividad);
+
 					}
 					
 					
@@ -306,3 +316,21 @@ void potabilidad(struct CAgua fuentes[],int num){
 	
 
 }
+int calidad_del_agua(int conductividad) {
+		
+		if ( 50 <= conductividad <= 250) {
+			printf("Conductividad Bajo:  Carece de minerales, como calcio, magnesio y zinc\n");
+		} else if (300<=conductividad && conductividad<=500) {
+			printf("Conductividad Ideal: este nivel es el punto óptimo para los TDS en el agua potable. Lo más probable es que el agua contenga minerales y no tenga un sabor plano\n");
+		} else if (600<=conductividad && conductividad<=900) {
+			printf("Conductividad No muy bien:considere un sistema de ósmosis inversa para filtrar TDS.\n");
+		} else if (1000<=conductividad && conductividad<=2000) {
+			printf("Conductividad Malo:no se recomienda beber agua a este nivel de TDS\n");
+		} else if (conductividad>2000) {
+			printf("Conductividad Inaceptable:Un nivel de TDS superior a 2000 ppm no es seguro y los filtros domésticos no pueden filtrar adecuadamente este nivel de contaminación\n");
+		} else {
+			printf("Error. cantidad de solidos disuelto totales no esta en el rango");
+		}
+		return ;
+	 }
+

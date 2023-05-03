@@ -44,7 +44,7 @@ int main() {
 
         switch (modo) {
             case 1: // Iniciar sesion
-                if (numerousuarios == 0) {
+                if (numerousuarios == 0) {    // ERROR
                     printf("\nNo hay usuarios registrados.\n");
                     break;
                 }
