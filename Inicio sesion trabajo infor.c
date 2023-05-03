@@ -1,7 +1,5 @@
 #include <stdio.h>
 #include <string.h>
-
-
 #define MAXIMO 100 // Máximo número de usuarios registrados
 
 struct DATOS {
@@ -59,7 +57,8 @@ int main() {
                 // Comprobar si coincide con algún usuario registrado o pre-registrado
                 for (i = 0; i < numerousuarios; i++) {
                     if (strcmp(users[i].usuario, usuario) == 0 && strcmp(users[i].contra, contra) == 0) {
-                        printf("\nInicio de sesion exitoso!\n");
+                        fflush(stdin);
+						printf("\nInicio de sesion exitoso!\n");//Lo de inicio de sesion esta 2 veces
                         registrado = 1;
                         break;
                     }
@@ -67,19 +66,23 @@ int main() {
 
                 // Comprobar usuarios pre-registrados
                 if (strcmp(usuario, "Javi") == 0 && strcmp(contra, "1234") == 0) {
-                    printf("\nInicio de sesion exitoso!\n");
+                    fflush(stdin);
+					printf("\nInicio de sesion exitoso!\n");
                     registrado = 1;
                     break;
                 } else if (strcmp(usuario, "Alvaro") == 0 && strcmp(contra, "1234") == 0) {
-                    printf("\nInicio de sesion exitoso!\n");
+                    fflush(stdin);
+					printf("\nInicio de sesion exitoso!\n");
                     registrado = 1;
                     break;
                 } else if (strcmp(usuario, "Alicia") == 0 && strcmp(contra, "1234") == 0) {
-                    printf("\nInicio de sesion exitoso!\n");
+                    fflush(stdin);
+					printf("\nInicio de sesion exitoso!\n");
                     registrado = 1;
                     break;
                 } else if (strcmp(usuario, "Senxue") == 0 && strcmp(contra, "1234") == 0) {
-                    printf("\nInicio de sesion exitoso!\n");
+                    fflush(stdin);
+					printf("\nInicio de sesion exitoso!\n");
                     registrado = 1;
                     break;
                 }
@@ -106,17 +109,16 @@ int main() {
 				users[numerousuarios] = nuevo;
 				numerousuarios++;
 			
-			
 			printf("\nGracias por registrarse. Se le redigira al menu de inicio.\n\n");
 			break;
 		case 3:
-			printf; ("\nHas salido del programa, vuelva pronto :)");
+			printf("\nHas salido del programa, vuelva pronto :)");
 			break;	
 		
 		default:
 			printf ("\nLa opcion no es valida. Se le redigira al menu de inicio.\n");
 		}
-	} while (modo !=3); 
+	} while ( modo !=3); // Funciona
 	
 	return 0;
 }
