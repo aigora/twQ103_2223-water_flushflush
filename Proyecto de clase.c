@@ -29,6 +29,8 @@ int potable(char fuente);
 
 int potable_col(int , char []); // Comprobar si el agua es potable de acuerdo con su valor de coliforme.
 
+int ecosist_turbi(int, char[]); 
+
 void imprimir_dato(struct CAgua [], int );
 
 int calidad_del_agua(int);
@@ -94,7 +96,7 @@ int main() {
 						printf("Segun los datos proporcionados, %s cumple las siguientes caracteristicas: \n", fuentes[i].nombre_fuente);
 						// potable_PH
 						potable_cond(fuentes[i].conductividad);
-						// potable_turb
+						ecosist_turbi(fuentes[i].turbidez, fuentes[i].nombre_fuente);
 						potable_col(fuentes[i].coliformes, fuentes[i].nombre_fuente);	
 						break;
 					} 
@@ -124,7 +126,7 @@ int main() {
 						printf("Segun los datos proporcionados, %s cumple las siguientes caracteristicas: \n", fuentes[i].nombre_fuente);
 						// potable_PH
 						potable_cond(fuentes[i].conductividad);
-						// potable_turb
+						ecosist_turbi(fuentes[i].turbidez, fuentes[i].nombre_fuente);
 						potable_col(fuentes[i].coliformes, fuentes[i].nombre_fuente);
 					}
 				}
@@ -150,9 +152,10 @@ int main() {
 				printf("\n");
 				break;	   
 		}
-	}
+	} 
+	while(opcion != 'D'); 
 
-return 0;	
+	return 0;	
 }
 
 // Función para imprimir datos del fichero 
@@ -196,6 +199,21 @@ int potable_col(int dato, char nombre[]) { // dato=fuentes[i].coliforme   nombre
 	}
 	else if(dato>2) {
 		printf("4.-El valor del coliforme ha alcanzado el limite.\nATENCION:Prohibido beber el agua del %s.\n", nombre);
+	}
+	
+	return ;
+}
+
+int ecosist_turbi(int dato, char nombre[]) { // dato=fuentes[i].coliforme   nombre=fuentes[i].nombre_fuente
+	
+	if(dato<1) {
+		printf("2.-Teniendo en cuenta el nivel de turbidez de la %s, esta fuente si tiene la capacidad para crear ecosistemas.\n", nombre);
+	}
+	else if(dato==1) {
+		printf("2.-Teniendo en cuenta el nivel de turbidez de la %s, esta fuente no tiene la capacidad para crear ecosistemas y es algo poco probable que ocurra.\n", nombre);
+	}
+	else if(dato>1) {
+		printf("2.-Teniendo en cuenta el nivel de turbidez de la %s, esta fuente no tiene la capacidad para crear ecosistemas y es algo poco probable que ocurra.\n", nombre);
 	}
 	
 	return ;
