@@ -15,6 +15,7 @@ void graficaPh(struct CAgua fuentes[],int num);
 void graficaColi(struct CAgua fuentes[],int num);
 void serapotable(struct CAgua [],int num);
 void potabilidad(struct CAgua fuentes[],int num);
+void maxPh(struct CAgua fuentes[],int num);
 int main() {
 // Variables que se usan ...
 	float mediaPh=0,media;
@@ -59,7 +60,7 @@ int main() {
 // Cerrar fichero
 	fclose(ficheros);
 	
-	
+	maxPh(fuentes,NumerodFuentes);
 	
 	FILE*ftablita;
 	
@@ -206,4 +207,33 @@ void potabilidad(struct CAgua fuentes[],int num){
 	printf("El porcentaje de las fuentes  que son potables es de :%f  \n",100*(float)potable/ NumerodFuentes);
 	
 
+}
+void maxPh(struct CAgua fuentes[],int num){
+	
+	float max=fuentes[0].PH;
+	float min=fuentes[0].PH;
+		int i=0,localizador1,localizador2;
+	
+	
+	for(i=1;i<NumerodFuentes;i++){
+		
+		if(max<fuentes[i].PH){
+			max=fuentes[i].PH;
+			localizador1=i;
+			
+		}
+	}
+	
+    for(i=1;i<NumerodFuentes;i++){
+		
+		if(min>fuentes[i].PH){
+			min=fuentes[i].PH;
+			localizador2=i;
+			
+		}
+	}
+	
+	printf("La fuente %s con un ph de %f es la mas acida(menor ph)\n",fuentes[localizador2].nombre_fuente,fuentes[localizador2].PH);
+	printf("Mientras que\nLa fuente %s con un ph de %f es la menos acida(mayor ph )\n",fuentes[localizador1].nombre_fuente,fuentes[localizador1].PH);
+	
 }

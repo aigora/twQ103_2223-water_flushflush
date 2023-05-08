@@ -23,6 +23,7 @@ void potable_Ph(struct CAgua fuentes[],int num);
 int potable_cond(int);
 int potable_turbi(int, char[]); 
 int potable_col(int , char []);
+void maxPh(struct CAgua fuentes[],int num);
 // Funciones para mostrar las graficas
 void serapotable(struct CAgua [],int num);  // Comprueba si la fuente es potable del cien por cien (cumple todas las condiciones)
 void grafica(struct CAgua [],int num);  // Muestra una lista de las fuentes totalmente potables
@@ -177,7 +178,8 @@ int main() {
 		printf("B- Buscar por un intervalo de pH.\n");
 		printf("C- Mostrar la estadistica de todas las fuentes potables.\n");
 		printf("D- Desea tener un fichero que muestre  las fuentes potables dependiendo de \n   los parametros(pH, conductividad, turbidez y coliforme)\n");
-		printf("E- Salir del programa.\n");	
+		printf("E- Mostrar la fuente mas y menos acida.\n");	
+		printf("G- Salir del programa.\n");
 		printf("Introduzca la opcion deseada: ");
 		scanf("%c", &opcion);
 		switch (opcion) {
@@ -269,9 +271,12 @@ int main() {
 				fclose(ficheros);
 				return 0;
 				break;
-				
 			case 'E':
 			case 'e':
+				maxPh(fuentes,NumerodFuentes);
+			     break;	
+			case 'G':
+			case 'g':
 				printf("Has salido del buscador.\n");
 				return 0;
 				
@@ -280,7 +285,7 @@ int main() {
 				printf("\n");
 				break; 
 		}
-	} while(opcion != 'E' && opcion != 'e'); 
+	} while(opcion != 'G' && opcion != 'g'); 
 
 	return 0;	
 }
@@ -432,4 +437,33 @@ void graficaColi(struct CAgua fuentes[],int num){
         //potable++;
         printf("%s\n",fuentes[num].nombre_fuente);
 	}
+}
+void maxPh(struct CAgua fuentes[],int num){
+	
+	float max=fuentes[0].PH;
+	float min=fuentes[0].PH;
+		int i=0,localizador1,localizador2;
+	
+	
+	for(i=1;i<NumerodFuentes;i++){
+		
+		if(max<fuentes[i].PH){
+			max=fuentes[i].PH;
+			localizador1=i;
+			
+		}
+	}
+	
+    for(i=1;i<NumerodFuentes;i++){
+		
+		if(min>fuentes[i].PH){
+			min=fuentes[i].PH;
+			localizador2=i;
+			
+		}
+	}
+	
+	printf("La fuente %s con un ph de %f es la mas acida(menor ph)\n",fuentes[localizador2].nombre_fuente,fuentes[localizador2].PH);
+	printf("Mientras que\nLa fuente %s con un ph de %f es la menos acida(mayor ph )\n\n",fuentes[localizador1].nombre_fuente,fuentes[localizador1].PH);
+	
 }
