@@ -1,4 +1,4 @@
-PH potables:	coliformes potables:		conductividad potables:			turbidez potables:				potable total:
+PH potables:	coliformes potables:		conductividad potables:					turbidez potables:						potable total:
 				Fuente_1
                        							Fuente_1
 Fuente_2
