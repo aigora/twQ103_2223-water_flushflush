@@ -241,6 +241,7 @@ int main() {
 			case 'D':
 			case 'd':
 				// Crear un nuevo fichero
+				printf("Has salido del buscador\n");
 				ficheros=freopen("tabla water flush flush.txt","w",stdout);
 				if(ficheros == NULL) { 
     				printf("No se ha podido crear el nuevo fichero.\n");
@@ -250,13 +251,14 @@ int main() {
 				fprintf(ficheros,"PH potables:");
 				fprintf(ficheros,"\tcoliformes potables:");
 				fprintf(ficheros,"\t\tconductividad potables:");
-				fprintf(ficheros,"\t\t\tturbidez potables:");
-				fprintf(ficheros,"\t\t\t\tpotable total:\n");
+				fprintf(ficheros,"\t\t\t\t\tturbidez potables:");
+				fprintf(ficheros,"\t\t\t\t\t\tpotable total:\n");
 				for(i=0;i<NumerodFuentes;i++){
 					graficaPh(fuentes,i);
 				}
 			
 				fclose(ficheros);
+				
 				return 0;
 				break;
 			case 'E':
