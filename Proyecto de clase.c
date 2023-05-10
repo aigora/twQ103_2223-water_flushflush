@@ -86,10 +86,9 @@ int main() {
     numerousuarios = 4;
     
 // Iniciar sesion
-    do{
-        // Menú de opciones
+    do{		// Menú de opciones
         fflush(stdin);
-        printf("\nQue desea hacer?\n");  // ERROR: cambiar -> mas formal
+        printf("\nQue desea hacer?\n"); 
         printf("1. Iniciar sesion\n");
         printf("2. Registrarse\n");
         printf("3. Salir del programa\n");
@@ -98,11 +97,6 @@ int main() {
 
         switch (modo) {
             case 1: 
-                if (numerousuarios == 0) {    // ERROR: en la linea 84, ha declarado que numerousuarios = 4, pues nunca sera 0
-                    printf("\nNo hay usuarios registrados.\n");
-                    break;
-                }
-
                 printf("\nIntroduce tu nombre de usuario: ");
                 scanf("%s", usuario);
                 printf("Introduce tu contrasenya: ");
@@ -112,7 +106,7 @@ int main() {
                 for (i = 0; i < numerousuarios; i++) {
                     if (strcmp(users[i].usuario, usuario) == 0 && strcmp(users[i].contra, contra) == 0) {
                         fflush(stdin);
-						printf("\nInicio de sesion exitoso!\n");//Lo de inicio de sesion esta 2 veces
+						printf("\nInicio de sesion exitoso!\n");
                         registrado = 1;
                         break;
                     }
@@ -228,7 +222,7 @@ int main() {
 						serapotable(fuentes,i);	
 					}
 				}
-				if(fuente_encontrado == 0) {  // ERROR: Seria que si el intervalo ...
+				if(fuente_encontrado == 0) {  
 					printf("No encontrado\n");
 				}
 				printf("\n");
@@ -248,7 +242,7 @@ int main() {
 			case 'd':
 				// Crear un nuevo fichero
 				ficheros=freopen("tabla water flush flush.txt","w",stdout);
-				if(ficheros == NULL) {  // ERROR: ??
+				if(ficheros == NULL) { 
     				printf("No se ha podido crear el nuevo fichero.\n");
     				return 0;
 				}
@@ -260,14 +254,8 @@ int main() {
 				fprintf(ficheros,"\t\t\t\tpotable total:\n");
 				for(i=0;i<NumerodFuentes;i++){
 					graficaPh(fuentes,i);
-					 // printf(ftablita,graficaPh(fuentes,i));
 				}
-				/*for(i=0;i<NumerodFuentes;i++){
-				graficaColi(fuentes,i);
-				// printf(ftablita,graficaPh(fuentes,i));
-				}
-				*/
-				// Cerrar el nuevo fichero
+			
 				fclose(ficheros);
 				return 0;
 				break;
@@ -439,30 +427,22 @@ void graficaColi(struct CAgua fuentes[],int num){
 	}
 }
 void maxPh(struct CAgua fuentes[],int num){
-	
 	float max=fuentes[0].PH;
 	float min=fuentes[0].PH;
-		int i=0,localizador1,localizador2;
-	
+	int i=0,localizador1,localizador2;
 	
 	for(i=1;i<NumerodFuentes;i++){
-		
 		if(max<fuentes[i].PH){
 			max=fuentes[i].PH;
-			localizador1=i;
-			
+			localizador1=i;	
 		}
 	}
-	
     for(i=1;i<NumerodFuentes;i++){
-		
 		if(min>fuentes[i].PH){
 			min=fuentes[i].PH;
 			localizador2=i;
-			
 		}
 	}
-	
 	printf("La fuente %s con un ph de %f es la mas acida(menor ph)\n",fuentes[localizador2].nombre_fuente,fuentes[localizador2].PH);
 	printf("Mientras que\nLa fuente %s con un ph de %f es la menos acida(mayor ph )\n\n",fuentes[localizador1].nombre_fuente,fuentes[localizador1].PH);
 	
