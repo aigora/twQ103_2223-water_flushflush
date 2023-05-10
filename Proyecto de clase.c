@@ -52,7 +52,7 @@ int main() {
 
 // Bienvenido
 	printf("Bienvenidos al navegador Water_FlushFlush!\n"); 
-	printf("Water_FlushFlush es un navegador que sirve para buscar informacion sobre la calidad del agua en su consumo,\nlos datos recogidos pertenecen al mes de mayo situado en los barrios de Madrid.\n"); 
+	printf("Water_FlushFlush es un navegador que sirve para buscar informacion sobre la calidad del agua en su consumo,\nlos datos recogidos pertenecen al mes de mayo situado en el barrio de Lavapies en Madrid.\n"); 
 
 // Abrir fichero
 	FILE *ficheros;
@@ -171,7 +171,7 @@ int main() {
 		printf("A- Buscar por el nombre de la fuente.\n");
 		printf("B- Buscar por un intervalo de pH.\n");
 		printf("C- Mostrar la estadistica de todas las fuentes potables.\n");
-		printf("D- Desea tener un fichero que muestre  las fuentes potables dependiendo de \n   los parametros(pH, conductividad, turbidez y coliforme)\n");
+		printf("D- Desea tener un fichero que muestre  las fuentes potables dependiendo de \n   los parametros(pH, conductividad, turbidez y coliforme) y salir del programa\n");
 		printf("E- Mostrar la fuente mas y menos acida.\n");	
 		printf("G- Salir del programa.\n");
 		printf("Introduzca la opcion deseada: ");
@@ -418,6 +418,8 @@ void graficaPh(struct CAgua fuentes[],int num) {
 	if((fuentes[num].turbidez<1)&&(fuentes[num].conductividad >50 && fuentes[num].conductividad <500)&&(fuentes[num].coliformes<2 )&&(fuentes[num].PH>6.5 && fuentes[num].PH<9.5)){
 		printf("                              \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t%s\n",fuentes[num].nombre_fuente);
 	}
+	
+	
 }
 void graficaColi(struct CAgua fuentes[],int num){
 	int potable=0,i;
