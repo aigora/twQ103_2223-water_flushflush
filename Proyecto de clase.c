@@ -404,19 +404,19 @@ void graficaPh(struct CAgua fuentes[],int num) {
 	int i;
 	
 	if(  (fuentes[num].PH>6.5 && fuentes[num].PH<9.5) ) {
-        printf("%s\n",fuentes[num].nombre_fuente);
+        printf("-%s\n",fuentes[num].nombre_fuente);
 	}
 	if(  (fuentes[num].coliformes<2 ) ) {
-        printf("\t\t\t\t%s\n",fuentes[num].nombre_fuente);
+        printf("\t\t\t\t-%s\n",fuentes[num].nombre_fuente);
 	}
 	if((fuentes[num].conductividad >50 && fuentes[num].conductividad <500)){
-	    printf("                       \t\t\t\t\t\t\t%s\n",fuentes[num].nombre_fuente);
+	    printf("                      \t\t\t\t\t\t\t-%s\n",fuentes[num].nombre_fuente);
 	}
 	if((fuentes[num].turbidez<1)) {
-		printf("                                 \t\t\t\t\t\t\t\t\t\t\t\t%s\n",fuentes[num].nombre_fuente);
+		printf("                                \t\t\t\t\t\t\t\t\t\t\t\t-%s\n",fuentes[num].nombre_fuente);
 	}
 	if((fuentes[num].turbidez<1)&&(fuentes[num].conductividad >50 && fuentes[num].conductividad <500)&&(fuentes[num].coliformes<2 )&&(fuentes[num].PH>6.5 && fuentes[num].PH<9.5)){
-		printf("                              \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t%s\n",fuentes[num].nombre_fuente);
+		printf("                             \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t-%s\n",fuentes[num].nombre_fuente);
 	}
 	
 	
