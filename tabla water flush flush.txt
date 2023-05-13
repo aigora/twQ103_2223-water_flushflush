@@ -1,102 +1,102 @@
 PH potables:	coliformes potables:		conductividad potables:					turbidez potables:						potable total:
-				-Fuente_1
-                      							-Fuente_1
--Fuente_2
-				-Fuente_2
-                      							-Fuente_2
-                                												-Fuente_2
-                             																					-Fuente_2
--Fuente_3
-				-Fuente_3
-                      							-Fuente_3
-                                												-Fuente_3
-                             																					-Fuente_3
--Fuente_4
-				-Fuente_4
-                      							-Fuente_4
-                                												-Fuente_4
-                             																					-Fuente_4
--Fuente_5
-				-Fuente_5
-                      							-Fuente_5
-                                												-Fuente_5
-                             																					-Fuente_5
--Fuente_6
-				-Fuente_6
-                      							-Fuente_6
-                                												-Fuente_6
-                             																					-Fuente_6
--Fuente_7
-				-Fuente_7
-                      							-Fuente_7
--Fuente_8
-				-Fuente_8
-                      							-Fuente_8
--Fuente_9
-				-Fuente_9
-                      							-Fuente_9
--Fuente_10
-				-Fuente_10
-                      							-Fuente_10
-                                												-Fuente_10
-                             																					-Fuente_10
--Fuente_11
-				-Fuente_11
-                      							-Fuente_11
-                                												-Fuente_11
-                             																					-Fuente_11
--Fuente_12
-				-Fuente_12
-                      							-Fuente_12
-                                												-Fuente_12
-                             																					-Fuente_12
--Fuente_13
-				-Fuente_13
-                      							-Fuente_13
-                                												-Fuente_13
-                             																					-Fuente_13
--Fuente_14
-				-Fuente_14
-                      							-Fuente_14
--Fuente_15
-				-Fuente_15
-                      							-Fuente_15
--Fuente_16
-				-Fuente_16
-                      							-Fuente_16
--Fuente_17
-                      							-Fuente_17
--Fuente_18
-				-Fuente_18
-                      							-Fuente_18
--Fuente_19
-				-Fuente_19
-                      							-Fuente_19
--Fuente_20
-				-Fuente_20
-                      							-Fuente_20
-                                												-Fuente_20
-                             																					-Fuente_20
--Fuente_21
-				-Fuente_21
-                      							-Fuente_21
-                                												-Fuente_21
-                             																					-Fuente_21
--Fuente_22
-				-Fuente_22
-                      							-Fuente_22
-                                												-Fuente_22
-                             																					-Fuente_22
--Fuente_23
-				-Fuente_23
-                      							-Fuente_23
--Fuente_24
-				-Fuente_24
-                      							-Fuente_24
-                                												-Fuente_24
-                             																					-Fuente_24
--Fuente_25
-				-Fuente_25
-                      							-Fuente_25
-                                												-Fuente_25
-                             																					-Fuente_25
+				Fuente_1
+                       							Fuente_1
+Fuente_2
+				Fuente_2
+                       							Fuente_2
+                                 												Fuente_2
+                              																					Fuente_2
+Fuente_3
+				Fuente_3
+                       							Fuente_3
+                                 												Fuente_3
+                              																					Fuente_3
+Fuente_4
+				Fuente_4
+                       							Fuente_4
+                                 												Fuente_4
+                              																					Fuente_4
+Fuente_5
+				Fuente_5
+                       							Fuente_5
+                                 												Fuente_5
+                              																					Fuente_5
+Fuente_6
+				Fuente_6
+                       							Fuente_6
+                                 												Fuente_6
+                              																					Fuente_6
+Fuente_7
+				Fuente_7
+                       							Fuente_7
+Fuente_8
+				Fuente_8
+                       							Fuente_8
+Fuente_9
+				Fuente_9
+                       							Fuente_9
+Fuente_10
+				Fuente_10
+                       							Fuente_10
+                                 												Fuente_10
+                              																					Fuente_10
+Fuente_11
+				Fuente_11
+                       							Fuente_11
+                                 												Fuente_11
+                              																					Fuente_11
+Fuente_12
+				Fuente_12
+                       							Fuente_12
+                                 												Fuente_12
+                              																					Fuente_12
+Fuente_13
+				Fuente_13
+                       							Fuente_13
+                                 												Fuente_13
+                              																					Fuente_13
+Fuente_14
+				Fuente_14
+                       							Fuente_14
+Fuente_15
+				Fuente_15
+                       							Fuente_15
+Fuente_16
+				Fuente_16
+                       							Fuente_16
+Fuente_17
+                       							Fuente_17
+Fuente_18
+				Fuente_18
+                       							Fuente_18
+Fuente_19
+				Fuente_19
+                       							Fuente_19
+Fuente_20
+				Fuente_20
+                       							Fuente_20
+                                 												Fuente_20
+                              																					Fuente_20
+Fuente_21
+				Fuente_21
+                       							Fuente_21
+                                 												Fuente_21
+                              																					Fuente_21
+Fuente_22
+				Fuente_22
+                       							Fuente_22
+                                 												Fuente_22
+                              																					Fuente_22
+Fuente_23
+				Fuente_23
+                       							Fuente_23
+Fuente_24
+				Fuente_24
+                       							Fuente_24
+                                 												Fuente_24
+                              																					Fuente_24
+Fuente_25
+				Fuente_25
+                       							Fuente_25
+                                 												Fuente_25
+                              																					Fuente_25
