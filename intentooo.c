@@ -50,7 +50,7 @@ int main() {
 
 
 	
-	ficheros=freopen("aaaaaaaaa.txt","w",stdout);
+	ficheros=freopen("tabla de la potabilidad.txt","w",stdout);
 				if(ficheros == NULL) { 
     				printf("No se ha podido crear el nuevo fichero.\n");
     				return 0;
