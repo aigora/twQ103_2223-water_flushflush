@@ -16,6 +16,13 @@ struct CAgua{
 	int coliformes;
 };
 
+struct CPotable{ // Estructura utilizado para imprimir datos en el nuevo fichero
+	char pH[20];
+	char conductividad[20];
+	char turbidez[20];
+	char coliforme[20];
+};
+
 // Funcion para imprimir los datos del fihcero
 void imprimir_dato(struct CAgua [], int );
 // Funciones para conocer la caracterastica de la fuente de acuerdo con su valor de los parametros
@@ -29,9 +36,8 @@ void serapotable(struct CAgua [],int num);  // Comprueba si la fuente es potable
 void grafica(struct CAgua [],int num);  // Muestra una lista de las fuentes totalmente potables
 void potabilidad(struct CAgua [],int num);  // Calcula la cantidad de fuentes potables + porcentaje respecto al total
 float mediaph(struct CAgua [],int num);  // Calcula la media del pH entre todas las fuentes
-// Funciones utilizados en el nuevo fichero
-void graficaPh(struct CAgua fuentes[],int num);
-void graficaColi(struct CAgua fuentes[],int num);
+// Función utilizado en la opcion E
+void maxPh(struct CAgua fuentes[],int num);
 
 				// FUNCION PRINCIPAL
 int main() {
@@ -49,6 +55,8 @@ int main() {
 	char opcion;	
 	char nombrebuscar[100];
 	int pH_inicio, pH_final;
+// Variables utilizados en el nuevo fichero
+	struct CPotable origen[NumerodFuentes];
 
 // Bienvenido
 	printf("Bienvenidos al navegador Water_FlushFlush!\n"); 
@@ -240,24 +248,46 @@ int main() {
 				
 			case 'D':
 			case 'd':
+				for(i=0; i<NumerodFuentes; i++) {
+					if (fuentes[i].PH > 6.5 && fuentes[i].PH < 9.5) {
+						strcpy(origen[i].pH, "Si");
+					}
+					else {
+						strcpy(origen[i].pH, "No");
+					}
+					if (fuentes[i].conductividad > 50 && fuentes[i].conductividad < 500) {
+						strcpy(origen[i].conductividad, "Si");
+					}
+					else {
+						strcpy(origen[i].conductividad, "No");
+					}
+					if (fuentes[i].turbidez < 1) {
+						strcpy(origen[i].turbidez, "Si");
+					}
+					else {
+						strcpy(origen[i].turbidez, "No");
+					}
+					if (fuentes[i].coliformes < 2) {
+						strcpy(origen[i].coliforme, "Si");
+					}
+					else {
+						strcpy(origen[i].coliforme, "No");
+					} 
+				}
 				// Crear un nuevo fichero
-				printf("Has salido del buscador\n");
-				ficheros=freopen("tabla water flush flush.txt","w",stdout);
+				ficheros=fopen("tabla.txt","w");
 				if(ficheros == NULL) { 
     				printf("No se ha podido crear el nuevo fichero.\n");
     				return 0;
 				}
 				// Escribir en el nuevo fichero
-				fprintf(ficheros,"PH potables:");
-				fprintf(ficheros,"\tcoliformes potables:");
-				fprintf(ficheros,"\t\tconductividad potables:");
-				fprintf(ficheros,"\t\t\t\t\tturbidez potables:");
-				fprintf(ficheros,"\t\t\t\t\t\tpotable total:\n");
-				for(i=0;i<NumerodFuentes;i++){
-					graficaPh(fuentes,i);
+				fprintf(ficheros,"%s   %s %s %s %s\n",parametro,pH,conductividad,turbidez,coliforme);
+				for (i=0; i<NumerodFuentes; i++) {
+					fprintf(ficheros, "%s\t %s\t  %s\t\t %s\t\t %s\n", fuentes[i].nombre_fuente, origen[i].pH, origen[i].conductividad, origen[i].turbidez, origen[i].coliforme);
 				}
-			
+				// Cerrar el nuevo fichero
 				fclose(ficheros);
+				printf("Has salido del buscador\n");
 				
 				return 0;
 				break;
@@ -399,35 +429,7 @@ float mediaph(struct CAgua fuentes[],int num){
 	return (suma/num);
 }
 
-// Funciones utiizados en el nuevo fichero
-void graficaPh(struct CAgua fuentes[],int num) {
-	int i;
-	
-	if(  (fuentes[num].PH>6.5 && fuentes[num].PH<9.5) ) {
-        printf("%s\n",fuentes[num].nombre_fuente);
-	}
-	if(  (fuentes[num].coliformes<2 ) ) {
-        printf("\t\t\t\t%s\n",fuentes[num].nombre_fuente);
-	}
-	if((fuentes[num].conductividad >50 && fuentes[num].conductividad <500)){
-	    printf("                       \t\t\t\t\t\t\t%s\n",fuentes[num].nombre_fuente);
-	}
-	if((fuentes[num].turbidez<1)) {
-		printf("                                 \t\t\t\t\t\t\t\t\t\t\t\t%s\n",fuentes[num].nombre_fuente);
-	}
-	if((fuentes[num].turbidez<1)&&(fuentes[num].conductividad >50 && fuentes[num].conductividad <500)&&(fuentes[num].coliformes<2 )&&(fuentes[num].PH>6.5 && fuentes[num].PH<9.5)){
-		printf("                              \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t%s\n",fuentes[num].nombre_fuente);
-	}
-}
-void graficaColi(struct CAgua fuentes[],int num){
-	int potable=0,i;
-	
-	//printf("GRAFICA DE FUENTES POTABLES\n");
-	if(  (fuentes[num].coliformes<2 ) ) {
-        //potable++;
-        printf("%s\n",fuentes[num].nombre_fuente);
-	}
-}
+// Funcion utilizado en la opcion E
 void maxPh(struct CAgua fuentes[],int num){
 	float max=fuentes[0].PH;
 	float min=fuentes[0].PH;
