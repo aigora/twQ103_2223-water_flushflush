@@ -38,6 +38,7 @@ void potabilidad(struct CAgua [],int num);  // Calcula la cantidad de fuentes po
 float mediaph(struct CAgua [],int num);  // Calcula la media del pH entre todas las fuentes
 // Función utilizado en la opcion E
 void maxPh(struct CAgua fuentes[],int num);
+void graficaPh(struct CAgua fuentes[],int num);
 
 				// FUNCION PRINCIPAL
 int main() {
@@ -247,46 +248,28 @@ int main() {
 				
 			case 'D':
 			case 'd':
-				for(i=0; i<NumerodFuentes; i++) {
-					if (fuentes[i].PH > 6.5 && fuentes[i].PH < 9.5) {
-						strcpy(origen[i].pH, "Si");
-					}
-					else {
-						strcpy(origen[i].pH, "No");
-					}
-					if (fuentes[i].conductividad > 50 && fuentes[i].conductividad < 500) {
-						strcpy(origen[i].conductividad, "Si");
-					}
-					else {
-						strcpy(origen[i].conductividad, "No");
-					}
-					if (fuentes[i].turbidez < 1) {
-						strcpy(origen[i].turbidez, "Si");
-					}
-					else {
-						strcpy(origen[i].turbidez, "No");
-					}
-					if (fuentes[i].coliformes < 2) {
-						strcpy(origen[i].coliforme, "Si");
-					}
-					else {
-						strcpy(origen[i].coliforme, "No");
-					} 
-				}
-				// Crear un nuevo fichero
-				ficheros=fopen("tabla.txt","w");
+				printf("Has salido del buscador.\n");
+				ficheros=freopen("Potabilidad_parametro.txt","w",stdout);
 				if(ficheros == NULL) { 
     				printf("No se ha podido crear el nuevo fichero.\n");
     				return 0;
 				}
-				// Escribir en el nuevo fichero
-				fprintf(ficheros,"%s   %s %s %s %s\n",parametro,pH,conductividad,turbidez,coliforme);
-				for (i=0; i<NumerodFuentes; i++) {
-					fprintf(ficheros, "%s\t %s\t  %s\t\t %s\t\t %s\n", fuentes[i].nombre_fuente, origen[i].pH, origen[i].conductividad, origen[i].turbidez, origen[i].coliforme);
+				//Escribir en el nuevo fichero
+			   
+				fprintf(ficheros,"\t\t\tPH potables:");
+				fprintf(ficheros,"\tcoliformes potables:");
+     		    fprintf(ficheros,"\tconductividad potables:");
+				fprintf(ficheros,"\t\tturbidez potables:");
+				fprintf(ficheros,"\t\tpotable total:\n");
+				for(i=0;i<NumerodFuentes;i++){
+					printf("%s",fuentes[i].nombre_fuente);
+					graficaPh(fuentes,i);
+				
 				}
-				// Cerrar el nuevo fichero
+			
 				fclose(ficheros);
-				printf("Has salido del buscador\n");
+	
+			
 				
 				return 0;
 				break;
@@ -449,4 +432,37 @@ void maxPh(struct CAgua fuentes[],int num){
 	printf("La fuente %s con un ph de %f es la mas acida(menor ph)\n",fuentes[localizador2].nombre_fuente,fuentes[localizador2].PH);
 	printf("Mientras que\nLa fuente %s con un ph de %f es la menos acida(mayor ph )\n\n",fuentes[localizador1].nombre_fuente,fuentes[localizador1].PH);
 	
+}
+void graficaPh(struct CAgua fuentes[],int num) {
+	int i;
+	
+	if(  (fuentes[num].PH>6.5 && fuentes[num].PH<9.5) ) {
+        printf("\tSi");
+	}
+	else 
+	printf("\tNo");
+	
+	if(  (fuentes[num].coliformes<2 ) ) {
+        printf("\t\t\t\tSi");
+	}
+	else 
+	printf("\t\t\t\tNo");
+	if((fuentes[num].conductividad >50 && fuentes[num].conductividad <500)){
+	    printf("\t\t\t\t\t\t\tSi");
+	}
+	else 
+	printf("\t\t\t\t\t\t\tNo");
+	if((fuentes[num].turbidez<1)) {
+		printf("\t\t\t\t\t\t\tSi");
+	}
+	else 
+	printf("\t\t\t\t\t\t\tNo");
+	if((fuentes[num].turbidez<1)&&(fuentes[num].conductividad >50 && fuentes[num].conductividad <500)&&(fuentes[num].coliformes<2 )&&(fuentes[num].PH>6.5 && fuentes[num].PH<9.5)){
+		printf("\t\t\t\t\t\t\t\tSi");
+	}
+	else 
+	printf("\t\t\t\t\t\t\t\tNo");
+	
+	if(i!=NumerodFuentes)
+	printf("\n");
 }
