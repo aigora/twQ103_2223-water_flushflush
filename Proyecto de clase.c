@@ -181,7 +181,7 @@ int main() {
 		printf("C- Mostrar la estadistica de todas las fuentes potables.\n");
 		printf("D- Desea tener un fichero que muestre  las fuentes potables dependiendo de \n   los parametros(pH, conductividad, turbidez y coliforme) y salir del programa.\n");
 		printf("E- Mostrar las fuentes con mayor y menor acidez.\n");	
-		printf("G- Salir del programa.\n");
+		printf("F- Salir del programa.\n");
 		printf("Introduzca la opcion deseada: ");
 		scanf("%c", &opcion);
 		switch (opcion) {
@@ -220,7 +220,6 @@ int main() {
 					if((pH_inicio<=fuentes[i].PH) && (pH_final>=fuentes[i].PH)) {
 						fuente_encontrado=1;
 				     	imprimir_dato(fuentes, i);
-						serapotable(fuentes,i); 
 						printf("Segun los datos proporcionados, %s cumple con las siguientes caracteristicas: \n", fuentes[i].nombre_fuente);
 						potable_Ph(fuentes,i);
 						potable_cond(fuentes[i].conductividad);
@@ -295,8 +294,8 @@ int main() {
 			case 'e':
 				maxPh(fuentes,NumerodFuentes);
 			     break;	
-			case 'G':
-			case 'g':
+			case 'F':
+			case 'f':
 				printf("Has salido del buscador.\n");
 				return 0;
 				
@@ -305,7 +304,7 @@ int main() {
 				printf("\n");
 				break; 
 		}
-	} while(opcion != 'G' && opcion != 'g'); 
+	} while(opcion != 'F' && opcion != 'f'); 
 
 	return 0;	
 }
