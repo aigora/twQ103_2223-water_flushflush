@@ -16,13 +16,6 @@ struct CAgua{
 	int coliformes;
 };
 
-struct CPotable{ // Estructura utilizado para imprimir datos en el nuevo fichero
-	char pH[20];
-	char conductividad[20];
-	char turbidez[20];
-	char coliforme[20];
-};
-
 // Funcion para imprimir los datos del fihcero
 void imprimir_dato(struct CAgua [], int );
 // Funciones para conocer la caracterastica de la fuente de acuerdo con su valor de los parametros
@@ -36,9 +29,10 @@ void serapotable(struct CAgua [],int num);  // Comprueba si la fuente es potable
 void grafica(struct CAgua [],int num);  // Muestra una lista de las fuentes totalmente potables
 void potabilidad(struct CAgua [],int num);  // Calcula la cantidad de fuentes potables + porcentaje respecto al total
 float mediaph(struct CAgua [],int num);  // Calcula la media del pH entre todas las fuentes
-// Función utilizado en la opcion E
+// Funcion utilizado en la opcion E
 void maxPh(struct CAgua fuentes[],int num);
-void graficaPh(struct CAgua fuentes[],int num);
+// Funcion utilizado en el nuevo fichero
+void grafica(struct CAgua fuentes[],int num);
 
 				// FUNCION PRINCIPAL
 int main() {
@@ -249,13 +243,13 @@ int main() {
 			case 'D':
 			case 'd':
 				printf("Has salido del buscador.\n");
+				// Abrir el nuevo fichero
 				ficheros=freopen("Potabilidad_parametro.txt","w",stdout);
 				if(ficheros == NULL) { 
     				printf("No se ha podido crear el nuevo fichero.\n");
     				return 0;
 				}
-				//Escribir en el nuevo fichero
-			   
+				// Escribir en el nuevo fichero
 				fprintf(ficheros,"\t\t\tPH potables:");
 				fprintf(ficheros,"\tcoliformes potables:");
      		    fprintf(ficheros,"\tconductividad potables:");
@@ -263,20 +257,17 @@ int main() {
 				fprintf(ficheros,"\t\tpotable total:\n");
 				for(i=0;i<NumerodFuentes;i++){
 					printf("%s",fuentes[i].nombre_fuente);
-					graficaPh(fuentes,i);
-				
+					grafica(fuentes,i);
 				}
-			
+				// Cerrar el nuevo fichero
 				fclose(ficheros);
-	
-			
-				
 				return 0;
+				
 				break;
 			case 'E':
 			case 'e':
 				maxPh(fuentes,NumerodFuentes);
-			     break;	
+			    break;	
 			case 'F':
 			case 'f':
 				printf("Has salido del buscador.\n");
@@ -433,6 +424,8 @@ void maxPh(struct CAgua fuentes[],int num){
 	printf("Mientras que\nLa fuente %s con un ph de %f es la menos acida(mayor ph )\n\n",fuentes[localizador1].nombre_fuente,fuentes[localizador1].PH);
 	
 }
+
+// Funcion utilizado en el nuevo fichero
 void graficaPh(struct CAgua fuentes[],int num) {
 	int i;
 	
@@ -441,7 +434,6 @@ void graficaPh(struct CAgua fuentes[],int num) {
 	}
 	else 
 	printf("\tNo");
-	
 	if(  (fuentes[num].coliformes<2 ) ) {
         printf("\t\t\t\tSi");
 	}
@@ -462,7 +454,6 @@ void graficaPh(struct CAgua fuentes[],int num) {
 	}
 	else 
 	printf("\t\t\t\t\t\tNo");
-	
 	if(i!=NumerodFuentes)
 	printf("\n");
 }
