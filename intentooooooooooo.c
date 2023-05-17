@@ -122,22 +122,22 @@ void graficaPh(struct CAgua fuentes[],int num) {
         printf("\t\t\t\tSi");
 	}
 	else 
-	printf("   \t\t\t\tNo");
+	printf("\t\t\t\tNo");
 	if((fuentes[num].conductividad >50 && fuentes[num].conductividad <500)){
-	    printf("   \t\t\t\t\tSi");
+	    printf("\t\t\t\t\t\t\tSi");
 	}
 	else 
-	printf("\t\t\t\t\tNo");
+	printf("\t\t\t\t\t\t\tNo");
 	if((fuentes[num].turbidez<1)) {
 		printf("\t\t\t\t\t\t\tSi");
 	}
 	else 
 	printf("\t\t\t\t\t\t\tNo");
 	if((fuentes[num].turbidez<1)&&(fuentes[num].conductividad >50 && fuentes[num].conductividad <500)&&(fuentes[num].coliformes<2 )&&(fuentes[num].PH>6.5 && fuentes[num].PH<9.5)){
-		printf("   \t\t\t\t\tSi");
+		printf("\t\t\t\t\t\t\t\tSi");
 	}
 	else 
-	printf("   \t\t\t\t\tNo");
+	printf("\t\t\t\t\t\t\t\tNo");
 	
 	if(i!=NumerodFuentes)
 	printf("\n");
