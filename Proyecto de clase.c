@@ -295,7 +295,7 @@ void imprimir_dato(struct CAgua fuentes[], int i) {
 void potable_Ph(struct CAgua fuentes[],int num){
 	if (fuentes[num].PH<=6.5 ) {
     	printf("\t1.-No es recomendable el consumo de agua\n");
-		printf("\t   El agua dura, o el agua con un pH alto contiene \n\t   una gran concentración de minerales disueltos.\n");
+		printf("\t   El agua dura, o el agua con un pH alto contiene \n\t   una gran concentracion de minerales disueltos.\n");
 		printf("\t   ademas,puede poseer  minerales como el calcio los cuales pueden causar \n\t   problemas con su posicionamiento en superficies de ceramica y por su gusto agrio.\n");
 	}
 	else if (fuentes[num].PH>6.5 && fuentes[num].PH<8.5) {
