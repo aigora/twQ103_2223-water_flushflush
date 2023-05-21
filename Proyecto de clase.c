@@ -32,7 +32,7 @@ float mediaph(struct CAgua [],int num);  // Calcula la media del pH entre todas 
 // Funcion utilizado en la opcion E
 void maxPh(struct CAgua fuentes[],int num);
 // Funcion utilizado en el nuevo fichero
-void grafica(struct CAgua fuentes[],int num);
+void GRAFICA(struct CAgua fuentes[],int num); 
 
 				// FUNCION PRINCIPAL
 int main() {
@@ -50,8 +50,6 @@ int main() {
 	char opcion;	
 	char nombrebuscar[100];
 	int pH_inicio, pH_final;
-// Variables utilizados en el nuevo fichero
-	struct CPotable origen[NumerodFuentes];
 
 // Bienvenido
 	printf("Bienvenidos al navegador Water_FlushFlush!\n"); 
@@ -257,7 +255,7 @@ int main() {
 				fprintf(ficheros,"\t\tpotable total:\n");
 				for(i=0;i<NumerodFuentes;i++){
 					printf("%s",fuentes[i].nombre_fuente);
-					grafica(fuentes,i);
+					GRAFICA(fuentes,i);
 				}
 				// Cerrar el nuevo fichero
 				fclose(ficheros);
@@ -426,7 +424,7 @@ void maxPh(struct CAgua fuentes[],int num){
 }
 
 // Funcion utilizado en el nuevo fichero
-void graficaPh(struct CAgua fuentes[],int num) {
+void GRAFICA(struct CAgua fuentes[],int num) {
 	int i;
 	
 	if(  (fuentes[num].PH>6.5 && fuentes[num].PH<9.5) ) {
